@@ -1,4 +1,4 @@
-# GPT Researcher - LangGraph Implementation
+# NeuralResearcher
 
 An intelligent research assistant based on LangGraph that can automatically conduct in-depth research and generate high-quality research reports.
 
@@ -17,77 +17,30 @@ An intelligent research assistant based on LangGraph that can automatically cond
 
 ## Architecture Design
 
-### System Architecture Overview
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                           GPT Researcher - LangGraph System                     │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐             │
-│  │   Web Search    │    │   Local RAG     │    │   Vector DB     │             │
-│  │  (DuckDuckGo,   │    │   Documents     │    │   (Milvus)      │             │
-│  │   Google, etc)  │    │                 │    │                 │             │
-│  └─────────┬───────┘    └─────────┬───────┘    └─────────┬───────┘             │
-│            │                      │                      │                     │
-│            └──────────────────────┼──────────────────────┘                     │
-│                                   │                                            │
-│  ┌─────────────────────────────────┼─────────────────────────────────────────┐  │
-│  │                    8-Agent Collaboration System                          │  │
-│  │                                 │                                         │  │
-│  │    ┌─────────────────────────────▼──────────────────────────────────┐    │  │
-│  │    │                 OrchestratorAgent                              │    │  │
-│  │    │           (Workflow Coordination & Management)                 │    │  │
-│  │    └─────────────────────────┬───────────────────────────────────────┘    │  │
-│  │                              │                                            │  │
-│  │    ┌─────────────────────────▼──────────────────────────────────┐         │  │
-│  │    │                 ResearcherAgent                            │         │  │
-│  │    │            (Information Gathering & Research)              │         │  │
-│  │    └─────────────────────────┬───────────────────────────────────────┘    │  │
-│  │                              │                                            │  │
-│  │    ┌─────────────────────────▼──────────────────────────────────┐         │  │
-│  │    │                  EditorAgent                               │         │  │
-│  │    │         (Outline Planning & Research Management)           │         │  │
-│  │    └─────────────────────────┬───────────────────────────────────────┘    │  │
-│  │                              │                                            │  │
-│  │    ┌─────────────────────────▼──────────────────────────────────┐         │  │
-│  │    │                  HumanAgent                                │         │  │
-│  │    │              (Human Supervision & Feedback)                │         │  │
-│  │    └─────────────────────────┬───────────────────────────────────────┘    │  │
-│  │                              │                                            │  │
-│  │    ┌─────────────────────────▼──────────────────────────────────┐         │  │
-│  │    │                 WriterAgent                                │         │  │
-│  │    │            (Report Writing & Organization)                 │         │  │
-│  │    └─────────────────────────┬───────────────────────────────────────┘    │  │
-│  │                              │                                            │  │
-│  │    ┌─────────────────────────▼──────────────────────────────────┐         │  │
-│  │    │                ReviewerAgent                               │         │  │
-│  │    │             (Quality Review & Feedback)                    │         │  │
-│  │    └─────────────────────────┬───────────────────────────────────────┘    │  │
-│  │                              │                                            │  │
-│  │    ┌─────────────────────────▼──────────────────────────────────┐         │  │
-│  │    │                ReviserAgent                                │         │  │
-│  │    │           (Content Revision & Improvement)                 │         │  │
-│  │    └─────────────────────────┬───────────────────────────────────────┘    │  │
-│  │                              │                                            │  │
-│  │    ┌─────────────────────────▼──────────────────────────────────┐         │  │
-│  │    │               PublisherAgent                               │         │  │
-│  │    │          (Multi-format Document Publishing)                │         │  │
-│  │    └─────────────────────────┬───────────────────────────────────────┘    │  │
-│  └──────────────────────────────┼──────────────────────────────────────────┘  │
-│                                 │                                            │
-│  ┌─────────────────────────────────────────────────────────────────────────┐  │
-│  │                         Output Formats                                 │  │
-│  │                                                                         │  │
-│  │    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐               │  │
-│  │    │  Markdown   │    │     PDF     │    │    DOCX     │               │  │
-│  │    │   (.md)     │    │   (.pdf)    │    │   (.docx)   │               │  │
-│  │    └─────────────┘    └─────────────┘    └─────────────┘               │  │
-│  └─────────────────────────────────────────────────────────────────────────┘  │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
-```
+### Main Workflow Pipeline
 
-### 8-Agent Collaboration Architecture
+The system follows a 13-step main workflow with modular components for enhanced maintainability and scalability:
+
+![Main Workflow Pipeline](assets/main-flow.svg)
+
+### Core System Components
+
+#### 🔄 **13-Step Main Pipeline**
+1. **Orchestrator Init** - System initialization and task coordination
+2. **Initial Research** - Preliminary information gathering using RAG module
+3. **Plan Outline** - Research structure planning and section definition
+4. **Human Review Plan** - Optional human supervision and feedback
+5. **Revise Plan** - Plan refinement based on feedback (conditional loop)
+6. **Parallel Research** - Multi-threaded deep research execution
+7. **Review Research** - Quality assessment and validation
+8. **Write Report** - Content generation with template and localization
+9. **Human Review Report** - Optional human review of final content
+10. **Revise Report** - Content refinement based on feedback (conditional loop)
+11. **Final Review** - Comprehensive quality check
+12. **Publish Report** - Multi-format document generation
+13. **Orchestrator Finalize** - Task completion and cleanup
+
+#### 🤖 **8-Agent Collaboration System**
 - **OrchestratorAgent**: Coordinates overall workflow and manages agent interactions
 - **ResearcherAgent**: Responsible for information gathering and in-depth research
 - **EditorAgent**: Responsible for research outline planning and parallel research management
@@ -97,33 +50,50 @@ An intelligent research assistant based on LangGraph that can automatically cond
 - **HumanAgent**: Responsible for human supervision and feedback
 - **PublisherAgent**: Responsible for multi-format document publishing
 
-### Complete Workflow
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                              Workflow Pipeline                                 │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│  [1] Orchestration    [2] Initial         [3] Outline        [4] Human Plan    │
-│      Initialization ──────► Research ──────► Planning ──────► Review           │
-│                                                                   │             │
-│                                                                   ▼             │
-│  [5] Plan Revision ◄──────────────────────────────────────────────┘             │
-│      (Conditional)                                                              │
-│           │                                                                     │
-│           ▼                                                                     │
-│  [6] Parallel         [7] Research        [8] Report         [9] Human Report  │
-│      In-depth ──────► Quality ──────► Writing ──────► Review           │
-│      Research             Review                                       │             │
-│                                                                   ▼             │
-│  [10] Report Revision ◄───────────────────────────────────────────┘             │
-│       (Conditional)                                                             │
-│            │                                                                    │
-│            ▼                                                                    │
-│  [11] Final          [12] Publish        [13] Orchestration                    │
-│       Review ──────► Output ──────► Completion                        │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
-```
+### Modular Architecture Components
+
+The system is designed with decoupled modules that can be independently developed and maintained:
+
+#### 📚 **RAG Module - Document Processing & Retrieval**
+![RAG Module](assets/doc-processing.svg)
+
+**Key Features:**
+- Multi-format document processing (PDF, DOCX, TXT, CSV, JSON, XML)
+- OCR text extraction for scanned documents
+- Long text processing with chunked summarization and merging
+- Milvus vector database for semantic search
+- Hybrid retrieval strategy (local documents + web search)
+- Support for structured data and data streams
+
+#### ⚡ **Parallel Processing Module - Multi-Task Research**
+![Parallel Processing Module](assets/parallel-process.svg)
+
+**Key Features:**
+- Concurrent execution of multiple research tasks
+- Deep search for each topic with timeout handling
+- Result aggregation and deduplication
+- Quality filtering and relevance ranking
+- Error handling and retry mechanisms
+
+#### 🌐 **Template & Localization Module**
+![Template & Localization Module](assets/template-local.svg)
+
+**Key Features:**
+- YAML/JSON template configuration system
+- Chapter structure and citation format customization
+- Multi-language support (English, Chinese Simplified/Traditional, Japanese, Korean)
+- Free LLM generation when no template is specified
+- Content formatting and validation
+
+#### 📄 **Multi-format Publishing Module**
+![Multi-format Publishing Module](assets/fomat-process.svg)
+
+**Key Features:**
+- Markdown, PDF, and DOCX format generation
+- Metadata integration and file organization
+- Error handling with fallback formats
+- Publishing summary and validation
+- Flexible output directory management
 
 ## Installation and Configuration
 
