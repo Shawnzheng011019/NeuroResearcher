@@ -1,4 +1,5 @@
 # NeuralResearcher
+![NeuralResearcher](assets/logo.png)
 
 An intelligent research assistant based on LangGraph that can automatically conduct in-depth research and generate high-quality research reports.
 
@@ -382,7 +383,7 @@ python main.py "AI development trends" --format markdown --verbose
 
 ## License
 
-This project is refactored based on the original gpt-researcher project and uses the same open source license.
+Apache License 2.0
 
 ## Contributing
 
