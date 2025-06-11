@@ -12,6 +12,12 @@ node_modules/
 # System files
 .DS_Store
 
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
 # Environment files
 .env
 

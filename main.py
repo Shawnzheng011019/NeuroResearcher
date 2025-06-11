@@ -95,7 +95,11 @@ class ResearchRunner:
         if status == "completed":
             final_state = result.get("final_state", {})
 
-            print(f"Query: {final_state.get('task', {}).get('query', 'N/A')}")
+            # Get task config - it's a TaskConfig object, not a dict
+            task = final_state.get('task')
+            query = task.query if task else 'N/A'
+
+            print(f"Query: {query}")
             print(f"Title: {final_state.get('title', 'N/A')}")
             print(f"Sections: {len(final_state.get('completed_sections', []))}")
             print(f"Sources: {len(final_state.get('sources', []))}")

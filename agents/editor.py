@@ -160,8 +160,10 @@ class EditorAgent:
     
     async def _generate_outline(self, query: str, initial_research: str, max_sections: int) -> Optional[Dict[str, Any]]:
         system_prompt = """You are an expert research editor responsible for creating comprehensive research outlines.
-        Your task is to analyze initial research findings and create a well-structured outline for a research report."""
-        
+        Your task is to analyze initial research findings and create a well-structured outline for a research report.
+
+CRITICAL: You MUST respond with ONLY valid JSON. Do not include any explanatory text, markdown formatting, or additional content. Your entire response must be parseable as JSON."""
+
         user_prompt = f"""Research Query: {query}
 
 Initial Research Summary:
@@ -172,17 +174,19 @@ Based on the research query and initial findings, create a comprehensive researc
 2. {max_sections} main section headers that logically organize the research topic
 3. Sections should focus on substantive research topics, NOT introduction, conclusion, or references
 
-Return your response as a JSON object with this exact structure:
+RESPOND WITH ONLY THIS JSON STRUCTURE (no other text):
 {{
     "title": "Research Report Title",
-    "sections": ["Section 1 Title", "Section 2 Title", "Section 3 Title", ...]
+    "sections": ["Section 1 Title", "Section 2 Title", "Section 3 Title"]
 }}
 
-Ensure the sections are:
+Requirements for sections:
 - Comprehensive and cover key aspects of the topic
 - Logically ordered
 - Specific enough to guide focused research
-- Relevant to answering the main research question"""
+- Relevant to answering the main research question
+
+IMPORTANT: Your response must start with {{ and end with }}. No explanations, no markdown, no additional text."""
         
         try:
             response = await self.llm_manager.generate_with_fallback(
@@ -190,21 +194,53 @@ Ensure the sections are:
                 system_prompt=system_prompt,
                 tool_type="smart"
             )
-            
+
+            # Debug: Log the raw response
+            logger.debug(f"Raw LLM response for outline: {response[:300] if response else 'None'}...")
+
+            if not response or not response.strip():
+                logger.error("Empty response from LLM for outline generation")
+                return None
+
+            # Clean the response - remove any potential markdown formatting
+            cleaned_response = response.strip()
+
+            # Remove markdown code blocks if present
+            if cleaned_response.startswith('```json'):
+                cleaned_response = cleaned_response[7:]
+            if cleaned_response.startswith('```'):
+                cleaned_response = cleaned_response[3:]
+            if cleaned_response.endswith('```'):
+                cleaned_response = cleaned_response[:-3]
+
+            cleaned_response = cleaned_response.strip()
+
+            # Try to find JSON in the response if it's not pure JSON
+            if not cleaned_response.startswith('{'):
+                json_start = cleaned_response.find('{')
+                if json_start >= 0:
+                    json_end = cleaned_response.rfind('}') + 1
+                    if json_end > json_start:
+                        cleaned_response = cleaned_response[json_start:json_end]
+
+            logger.debug(f"Cleaned response: {cleaned_response[:200]}...")
+
             # Parse JSON response
-            outline_data = json.loads(response.strip())
-            
+            outline_data = json.loads(cleaned_response)
+
             # Validate structure
-            if "title" in outline_data and "sections" in outline_data:
+            if "title" in outline_data and "sections" in outline_data and isinstance(outline_data["sections"], list):
                 # Limit sections to max_sections
                 outline_data["sections"] = outline_data["sections"][:max_sections]
+                logger.info(f"Successfully generated outline with {len(outline_data['sections'])} sections")
                 return outline_data
             else:
-                logger.error("Invalid outline structure returned")
+                logger.error(f"Invalid outline structure returned: {outline_data}")
                 return None
-                
+
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse outline JSON: {str(e)}")
+            logger.error(f"Raw response that failed to parse: {response[:500] if response else 'None'}")
             return None
         except Exception as e:
             logger.error(f"Failed to generate outline: {str(e)}")
