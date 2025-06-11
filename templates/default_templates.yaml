@@ -1,0 +1,117 @@
+templates:
+  academic:
+    citation:
+      bibliography_format: '{author} ({year}). {title}. {journal}, {volume}({issue}),
+        {pages}.'
+      date_format: '%Y, %B %d'
+      format_string: '{author} ({year}). {title}. {journal}, {volume}({issue}), {pages}.'
+      in_text_format: ({author}, {year})
+      style: apa
+      url_format: '{author} ({year}). {title}. Retrieved from {url}'
+    description: Academic research paper template
+    language: en
+    sections:
+    - content_type: summary
+      name: abstract
+      order: 1
+      required: true
+      title: Abstract
+    - content_type: paragraph
+      name: introduction
+      order: 2
+      required: true
+      subsections:
+      - content_type: paragraph
+        name: background
+        order: 1
+        required: true
+        title: Background
+      - content_type: list
+        name: objectives
+        order: 2
+        required: true
+        title: Research Objectives
+      title: Introduction
+    - content_type: paragraph
+      name: literature_review
+      order: 3
+      required: true
+      title: Literature Review
+    - content_type: paragraph
+      name: methodology
+      order: 4
+      required: true
+      title: Methodology
+    - content_type: mixed
+      name: results
+      order: 5
+      required: true
+      title: Results
+    - content_type: paragraph
+      name: discussion
+      order: 6
+      required: true
+      title: Discussion
+    - content_type: paragraph
+      name: conclusion
+      order: 7
+      required: true
+      title: Conclusion
+    - content_type: bibliography
+      name: references
+      order: 8
+      required: true
+      title: References
+  default:
+    citation:
+      bibliography_format: '{author} ({year}). {title}. {source}.'
+      date_format: '%Y-%m-%d'
+      format_string: '{author} ({year}). {title}. {source}.'
+      in_text_format: ({author}, {year})
+      style: apa
+      url_format: '{title}. Retrieved from {url}'
+    description: Default research report template
+    formatting:
+      citation_style: numbered
+      paragraph_spacing: double
+      section_style: h2
+      subsection_style: h3
+      title_style: h1
+    language: en
+    metadata_fields:
+    - date
+    - author
+    - query
+    - sources
+    - cost
+    sections:
+    - content_type: summary
+      name: abstract
+      order: 1
+      required: false
+      title: Abstract
+    - content_type: paragraph
+      name: introduction
+      order: 2
+      required: true
+      title: Introduction
+    - content_type: paragraph
+      name: methodology
+      order: 3
+      required: true
+      title: Methodology
+    - content_type: list
+      name: findings
+      order: 4
+      required: true
+      title: Key Findings
+    - content_type: paragraph
+      name: analysis
+      order: 5
+      required: true
+      title: Analysis
+    - content_type: paragraph
+      name: conclusion
+      order: 6
+      required: true
+      title: Conclusion

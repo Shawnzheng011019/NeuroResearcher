@@ -1,0 +1,19 @@
+# Test files and directories
+test*
+test*/
+
+# Demo files and directories
+demo*
+demo*/
+
+# Dependencies
+node_modules/
+
+# System files
+.DS_Store
+
+# Environment files
+.env
+
+# Output directories
+outputs/

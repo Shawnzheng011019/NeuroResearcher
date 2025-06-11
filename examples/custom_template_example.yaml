@@ -1,0 +1,75 @@
+name: "business_report"
+description: "Business analysis report template"
+language: "en"
+sections:
+  - name: "executive_summary"
+    title: "Executive Summary"
+    order: 1
+    required: true
+    content_type: "summary"
+    formatting:
+      style: "highlight"
+      max_length: 500
+  - name: "market_analysis"
+    title: "Market Analysis"
+    order: 2
+    required: true
+    content_type: "paragraph"
+    subsections:
+      - name: "market_size"
+        title: "Market Size"
+        order: 1
+        required: true
+        content_type: "data"
+      - name: "competitors"
+        title: "Competitive Landscape"
+        order: 2
+        required: true
+        content_type: "list"
+  - name: "financial_analysis"
+    title: "Financial Analysis"
+    order: 3
+    required: true
+    content_type: "mixed"
+  - name: "recommendations"
+    title: "Strategic Recommendations"
+    order: 4
+    required: true
+    content_type: "list"
+  - name: "risk_assessment"
+    title: "Risk Assessment"
+    order: 5
+    required: false
+    content_type: "paragraph"
+  - name: "appendix"
+    title: "Appendix"
+    order: 6
+    required: false
+    content_type: "data"
+
+citation:
+  style: "harvard"
+  format_string: "{author} {year}, '{title}', {source}."
+  bibliography_format: "{author} {year}, '{title}', {source}, viewed {date}."
+  in_text_format: "({author} {year})"
+  url_format: "{author} {year}, '{title}', {source}, viewed {date}, <{url}>."
+  date_format: "%d %B %Y"
+
+formatting:
+  title_style: "h1"
+  section_style: "h2"
+  subsection_style: "h3"
+  paragraph_spacing: "single"
+  citation_style: "harvard"
+  page_numbers: true
+  table_of_contents: true
+
+metadata_fields:
+  - "date"
+  - "author"
+  - "query"
+  - "sources"
+  - "cost"
+  - "company"
+  - "industry"
+  - "analysis_period"

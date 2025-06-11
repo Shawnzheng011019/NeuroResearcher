@@ -1,0 +1,11 @@
+{
+  "python_version": "3.11",
+  "dependencies": [
+    "."
+  ],
+  "graphs": {
+    "research_workflow": "./graph.py:create_research_workflow",
+    "draft_review_workflow": "./graph.py:create_draft_review_workflow"
+  },
+  "env": ".env"
+}

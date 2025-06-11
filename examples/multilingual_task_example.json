@@ -1,0 +1,28 @@
+{
+  "query": "人工智能在医疗保健领域的最新发展和未来前景",
+  "report_type": "research_report",
+  "report_source": "web",
+  "tone": "objective",
+  "max_sections": 5,
+  "publish_formats": {
+    "markdown": true,
+    "pdf": true,
+    "docx": false
+  },
+  "include_human_feedback": false,
+  "follow_guidelines": true,
+  "model": "gpt-4o",
+  "guidelines": [
+    "使用专业的医疗术语",
+    "包含具体的案例研究",
+    "引用权威的医学期刊",
+    "提供平衡的分析观点"
+  ],
+  "verbose": true,
+  "template_name": "academic",
+  "language": "zh-cn",
+  "citation_style": "apa",
+  "source_urls": null,
+  "document_urls": null,
+  "headers": null
+}

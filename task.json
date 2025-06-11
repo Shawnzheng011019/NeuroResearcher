@@ -1,0 +1,26 @@
+{
+  "query": "What are the current trends and future prospects of artificial intelligence in healthcare?",
+  "report_type": "research_report",
+  "report_source": "web",
+  "tone": "objective",
+  "max_sections": 5,
+  "publish_formats": {
+    "markdown": true,
+    "pdf": true,
+    "docx": false
+  },
+  "include_human_feedback": false,
+  "follow_guidelines": true,
+  "model": "gpt-4o",
+  "guidelines": [
+    "Use clear, professional language suitable for healthcare professionals",
+    "Include specific examples and case studies where available",
+    "Cite credible sources and recent research",
+    "Structure the report with clear headings and subheadings",
+    "Provide balanced analysis of benefits and challenges"
+  ],
+  "verbose": true,
+  "source_urls": null,
+  "document_urls": null,
+  "headers": null
+}
