@@ -1,0 +1,31 @@
+2025-06-11 14:05:04,428 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/29934212821: HTTP 403
+2025-06-11 14:05:06,349 - agents.researcher - WARNING - No research content found from any source
+2025-06-11 14:05:10,075 - agents.editor - ERROR - Failed to parse outline JSON: Expecting value: line 1 column 1 (char 0)
+2025-06-11 14:05:10,076 - agents.editor - WARNING - Failed to generate research outline
+2025-06-11 14:05:17,589 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/19078922684: HTTP 403
+2025-06-11 14:05:17,599 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/646163153: HTTP 403
+2025-06-11 14:05:17,628 - tools.scraper_tools - ERROR - Error scraping http://theory.people.com.cn/n1/2020/0903/c40531-31847197.html: 'utf-8' codec can't decode byte 0xc8 in position 341: invalid continuation byte
+2025-06-11 14:05:17,935 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/623034662: HTTP 403
+2025-06-11 14:05:23,128 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/375549477: HTTP 403
+2025-06-11 14:05:23,131 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/672465930: HTTP 403
+2025-06-11 14:05:25,839 - tools.scraper_tools - ERROR - Error scraping https://runwise.oss-accelerate.aliyuncs.com/sites/15/2024/04/创新研报_中国人工智能（AI）2024各行业应用研究报告_大视研究.pdf: 'utf-8' codec can't decode byte 0xa1 in position 10: invalid start byte
+2025-06-11 14:05:27,920 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/672465930: HTTP 403
+2025-06-11 14:05:27,921 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/668366241: HTTP 403
+2025-06-11 14:05:28,022 - tools.scraper_tools - ERROR - Error scraping https://yizhe.dmu.edu.cn/data/article/yxyzx/preview/pdf/7-7-likunpeng.pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-11 14:05:30,191 - tools.scraper_tools - ERROR - Error scraping https://ai-ethics-and-governance.institute/wp-content/uploads/2022/04/WHO-Guidance-Ethics-Governance-AI-for-Health-Chinese-version.pdf: 'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte
+2025-06-11 14:05:32,187 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/437250921: HTTP 403
+2025-06-11 14:05:36,167 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/670999570: HTTP 403
+2025-06-11 14:05:36,232 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/652805184: HTTP 403
+2025-06-11 14:05:38,475 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/1911197561932476955: HTTP 403
+2025-06-11 14:05:39,319 - tools.scraper_tools - ERROR - Error scraping http://www.caict.ac.cn/kxyj/qwfb/bps/202412/P020241210548865982463.pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-11 14:05:41,148 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/437250921: HTTP 403
+2025-06-11 14:05:47,575 - tools.scraper_tools - ERROR - Error scraping https://www.isc.org.cn/profile//2025/04/25/fc822d3b-b622-4970-851e-1e8d599be187.pdf: 'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte
+2025-06-11 14:06:11,725 - tools.scraper_tools - WARNING - Timeout scraping http://www.caict.ac.cn/kxyj/qwfb/ztbg/202312/P020240103531660935078.pdf
+2025-06-11 14:06:13,165 - tools.scraper_tools - ERROR - Error scraping http://views.ce.cn/view/ent/202410/08/t20241008_39160977.shtml: 'utf-8' codec can't decode byte 0xc8 in position 23: invalid continuation byte
+2025-06-11 14:06:13,392 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/1913562881569588447: HTTP 403
+2025-06-11 14:06:30,310 - tools.scraper_tools - ERROR - Error scraping https://assets.kpmg.com/content/dam/kpmg/cn/pdf/zh/2023/12/prospects-for-the-global-transformation-of-artificial-intelligence.pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-11 14:06:39,283 - agents.reviewer - ERROR - Failed to parse review JSON for Analysis of 什么是人工智能？: Expecting value: line 1 column 1 (char 0)
+2025-06-11 14:06:47,677 - agents.reviewer - ERROR - Failed to parse review JSON for Key Findings: Expecting value: line 1 column 1 (char 0)
+2025-06-11 14:06:56,264 - agents.reviewer - ERROR - Failed to parse review JSON for Implications: Expecting value: line 1 column 1 (char 0)
+2025-06-11 14:07:41,867 - agents.reviewer - ERROR - Failed to parse final review JSON: Expecting value: line 1 column 1 (char 0)
+2025-06-11 14:07:41,873 - __main__ - ERROR - Unexpected error: 'TaskConfig' object has no attribute 'get'

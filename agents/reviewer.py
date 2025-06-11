@@ -1,5 +1,4 @@
-import asyncio
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 import logging
 import json
 
@@ -117,10 +116,13 @@ class ReviewerAgent:
         topic = research_data.get("topic", "Unknown")
         content = research_data.get("content", "")
         sources = research_data.get("sources", [])
-        
-        system_prompt = """You are an expert research reviewer with expertise in evaluating research quality, 
-        accuracy, and completeness. Provide detailed, constructive feedback on research content."""
-        
+
+        system_prompt = """You are an expert research reviewer with expertise in evaluating research quality,
+        accuracy, and completeness. Provide detailed, constructive feedback on research content.
+
+        IMPORTANT: You must respond with a valid JSON object only. Do not include any markdown formatting,
+        code blocks, or additional text outside the JSON."""
+
         user_prompt = f"""Research Topic: {topic}
 Main Research Query: {task_config.query}
 
@@ -145,44 +147,102 @@ Provide your review as a JSON object:
     "suggestions": ["suggestion 1", "suggestion 2", ...],
     "overall_assessment": "Brief overall assessment"
 }}"""
-        
+
         try:
             response = await self.llm_manager.generate_with_fallback(
                 prompt=user_prompt,
                 system_prompt=system_prompt,
                 tool_type="smart"
             )
-            
-            review_data = json.loads(response.strip())
+
+            # Clean and validate response
+            cleaned_response = self._clean_json_response(response)
+            if not cleaned_response:
+                logger.error(f"Empty response from LLM for topic {topic}")
+                return self._create_fallback_review(topic, "Empty LLM response")
+
+            logger.debug(f"LLM response for {topic}: {cleaned_response[:200]}...")
+
+            review_data = json.loads(cleaned_response)
+
+            # Validate required fields
+            if not self._validate_review_structure(review_data):
+                logger.error(f"Invalid review structure for {topic}")
+                return self._create_fallback_review(topic, "Invalid review structure")
+
             return review_data
-            
+
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse review JSON for {topic}: {str(e)}")
-            return {
-                "topic": topic,
-                "quality_score": 0.7,
-                "strengths": ["Content provided"],
-                "weaknesses": ["Review parsing failed"],
-                "suggestions": ["Manual review recommended"],
-                "overall_assessment": "Automated review failed"
-            }
+            logger.error(f"Raw response: {response[:500] if response else 'None'}")
+            return self._create_fallback_review(topic, f"JSON parsing failed: {str(e)}")
+
         except Exception as e:
             logger.error(f"Failed to review research section {topic}: {str(e)}")
-            return {
-                "topic": topic,
-                "quality_score": 0.6,
-                "strengths": [],
-                "weaknesses": [f"Review failed: {str(e)}"],
-                "suggestions": ["Manual review needed"],
-                "overall_assessment": "Review process encountered errors"
-            }
+            return self._create_fallback_review(topic, f"Review failed: {str(e)}")
+
+    def _clean_json_response(self, response: str) -> str:
+        if not response:
+            return ""
+
+        # Remove common markdown formatting
+        cleaned = response.strip()
+
+        # Remove markdown code blocks
+        if cleaned.startswith("```json"):
+            cleaned = cleaned[7:]
+        elif cleaned.startswith("```"):
+            cleaned = cleaned[3:]
+
+        if cleaned.endswith("```"):
+            cleaned = cleaned[:-3]
+
+        # Remove any leading/trailing whitespace
+        cleaned = cleaned.strip()
+
+        return cleaned
+
+    def _validate_review_structure(self, review_data: Dict[str, Any]) -> bool:
+        required_fields = ["topic", "quality_score", "strengths", "weaknesses", "suggestions", "overall_assessment"]
+
+        for field in required_fields:
+            if field not in review_data:
+                return False
+
+        # Validate data types
+        if not isinstance(review_data.get("quality_score"), (int, float)):
+            return False
+
+        if not isinstance(review_data.get("strengths"), list):
+            return False
+
+        if not isinstance(review_data.get("weaknesses"), list):
+            return False
+
+        if not isinstance(review_data.get("suggestions"), list):
+            return False
+
+        return True
+
+    def _create_fallback_review(self, topic: str, error_msg: str) -> Dict[str, Any]:
+        return {
+            "topic": topic,
+            "quality_score": 0.7,
+            "strengths": ["Content provided"],
+            "weaknesses": ["Review parsing failed"],
+            "suggestions": ["Manual review recommended"],
+            "overall_assessment": f"Automated review failed: {error_msg}"
+        }
     
     async def _review_draft_content(self, topic: str, draft_content: Dict[str, Any], task_config) -> Dict[str, Any]:
         content = draft_content.get("content", "")
-        
-        system_prompt = """You are an expert editor and content reviewer. Evaluate draft content for quality, 
-        accuracy, completeness, and writing quality. Provide specific, actionable feedback."""
-        
+
+        system_prompt = """You are an expert editor and content reviewer. Evaluate draft content for quality,
+        accuracy, completeness, and writing quality. Provide specific, actionable feedback.
+
+        IMPORTANT: You must respond with a valid JSON object only. Do not include any markdown formatting,
+        code blocks, or additional text outside the JSON."""
+
         user_prompt = f"""Draft Topic: {topic}
 Research Context: {task_config.query}
 
@@ -206,35 +266,70 @@ Provide your review as a JSON object:
 }}
 
 Set needs_revision to true only if there are significant issues that require content changes."""
-        
+
         try:
             response = await self.llm_manager.generate_with_fallback(
                 prompt=user_prompt,
                 system_prompt=system_prompt,
                 tool_type="smart"
             )
-            
-            review_data = json.loads(response.strip())
+
+            # Clean and validate response
+            cleaned_response = self._clean_json_response(response)
+            if not cleaned_response:
+                logger.error(f"Empty response from LLM for draft review of {topic}")
+                return self._create_fallback_draft_review("Empty LLM response")
+
+            logger.debug(f"LLM draft review response for {topic}: {cleaned_response[:200]}...")
+
+            review_data = json.loads(cleaned_response)
+
+            # Validate required fields
+            if not self._validate_draft_review_structure(review_data):
+                logger.error(f"Invalid draft review structure for {topic}")
+                return self._create_fallback_draft_review("Invalid review structure")
+
             return review_data
-            
+
         except json.JSONDecodeError as e:
-            logger.error(f"Failed to parse draft review JSON: {str(e)}")
-            return {
-                "needs_revision": False,
-                "quality_score": 0.7,
-                "feedback": "Review parsing failed - content approved by default",
-                "priority_issues": [],
-                "minor_suggestions": []
-            }
+            logger.error(f"Failed to parse draft review JSON for {topic}: {str(e)}")
+            logger.error(f"Raw response: {response[:500] if response else 'None'}")
+            return self._create_fallback_draft_review(f"JSON parsing failed: {str(e)}")
+
         except Exception as e:
-            logger.error(f"Failed to review draft content: {str(e)}")
-            return {
-                "needs_revision": False,
-                "quality_score": 0.6,
-                "feedback": f"Review failed: {str(e)}",
-                "priority_issues": [],
-                "minor_suggestions": []
-            }
+            logger.error(f"Failed to review draft content for {topic}: {str(e)}")
+            return self._create_fallback_draft_review(f"Review failed: {str(e)}")
+
+    def _validate_draft_review_structure(self, review_data: Dict[str, Any]) -> bool:
+        required_fields = ["needs_revision", "quality_score", "feedback", "priority_issues", "minor_suggestions"]
+
+        for field in required_fields:
+            if field not in review_data:
+                return False
+
+        # Validate data types
+        if not isinstance(review_data.get("needs_revision"), bool):
+            return False
+
+        if not isinstance(review_data.get("quality_score"), (int, float)):
+            return False
+
+        if not isinstance(review_data.get("priority_issues"), list):
+            return False
+
+        if not isinstance(review_data.get("minor_suggestions"), list):
+            return False
+
+        return True
+
+    def _create_fallback_draft_review(self, error_msg: str) -> Dict[str, Any]:
+        return {
+            "needs_revision": False,
+            "quality_score": 0.7,
+            "feedback": f"Review parsing failed - content approved by default: {error_msg}",
+            "priority_issues": [],
+            "minor_suggestions": []
+        }
     
     async def _compile_overall_feedback(self, review_results: List[Dict[str, Any]], state: ResearchState) -> str:
         # Calculate average quality score
@@ -290,9 +385,12 @@ Provide a comprehensive overall assessment (200-300 words) that:
             return f"Overall research quality score: {avg_quality:.2f}. {len(review_results)} sections reviewed."
     
     async def _review_complete_report(self, report_content: str, task_config) -> Dict[str, Any]:
-        system_prompt = """You are a senior research reviewer conducting a final quality assessment of a complete research report. 
-        Evaluate the report holistically for overall quality, coherence, and completeness."""
-        
+        system_prompt = """You are a senior research reviewer conducting a final quality assessment of a complete research report.
+        Evaluate the report holistically for overall quality, coherence, and completeness.
+
+        IMPORTANT: You must respond with a valid JSON object only. Do not include any markdown formatting,
+        code blocks, or additional text outside the JSON."""
+
         user_prompt = f"""Research Query: {task_config.query}
 
 Complete Research Report:
@@ -314,34 +412,71 @@ Provide your assessment as a JSON object:
     "recommendations": ["recommendation 1", "recommendation 2", ...],
     "publication_ready": true/false
 }}"""
-        
+
         try:
             response = await self.llm_manager.generate_with_fallback(
                 prompt=user_prompt,
                 system_prompt=system_prompt,
                 tool_type="smart"
             )
-            
-            review_data = json.loads(response.strip())
+
+            # Clean and validate response
+            cleaned_response = self._clean_json_response(response)
+            if not cleaned_response:
+                logger.error("Empty response from LLM for final report review")
+                return self._create_fallback_final_review("Empty LLM response")
+
+            logger.debug(f"LLM final review response: {cleaned_response[:200]}...")
+
+            review_data = json.loads(cleaned_response)
+
+            # Validate required fields
+            if not self._validate_final_review_structure(review_data):
+                logger.error("Invalid final review structure")
+                return self._create_fallback_final_review("Invalid review structure")
+
             return review_data
-            
+
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse final review JSON: {str(e)}")
-            return {
-                "overall_score": 0.8,
-                "summary": "Final review completed with parsing issues",
-                "strengths": ["Report completed"],
-                "areas_for_improvement": ["Review system needs attention"],
-                "recommendations": ["Manual final review recommended"],
-                "publication_ready": True
-            }
+            logger.error(f"Raw response: {response[:500] if response else 'None'}")
+            return self._create_fallback_final_review(f"JSON parsing failed: {str(e)}")
+
         except Exception as e:
             logger.error(f"Failed to conduct final review: {str(e)}")
-            return {
-                "overall_score": 0.7,
-                "summary": f"Final review failed: {str(e)}",
-                "strengths": [],
-                "areas_for_improvement": ["Review process needs debugging"],
-                "recommendations": ["Technical review required"],
-                "publication_ready": True
-            }
+            return self._create_fallback_final_review(f"Review failed: {str(e)}")
+
+    def _validate_final_review_structure(self, review_data: Dict[str, Any]) -> bool:
+        required_fields = ["overall_score", "summary", "strengths", "areas_for_improvement", "recommendations", "publication_ready"]
+
+        for field in required_fields:
+            if field not in review_data:
+                return False
+
+        # Validate data types
+        if not isinstance(review_data.get("overall_score"), (int, float)):
+            return False
+
+        if not isinstance(review_data.get("publication_ready"), bool):
+            return False
+
+        if not isinstance(review_data.get("strengths"), list):
+            return False
+
+        if not isinstance(review_data.get("areas_for_improvement"), list):
+            return False
+
+        if not isinstance(review_data.get("recommendations"), list):
+            return False
+
+        return True
+
+    def _create_fallback_final_review(self, error_msg: str) -> Dict[str, Any]:
+        return {
+            "overall_score": 0.8,
+            "summary": f"Final review completed with issues: {error_msg}",
+            "strengths": ["Report completed"],
+            "areas_for_improvement": ["Review system needs attention"],
+            "recommendations": ["Manual final review recommended"],
+            "publication_ready": True
+        }
