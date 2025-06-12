@@ -1,10 +1,11 @@
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 import logging
 import json
 
 from tools.llm_tools import LLMManager
 from state import ResearchState, DraftState
 from config import Config
+from localization.prompt_manager import MultilingualPromptManager, PromptType
 
 logger = logging.getLogger(__name__)
 
@@ -13,6 +14,9 @@ class ReviewerAgent:
     def __init__(self, config: Config, llm_manager: LLMManager):
         self.config = config
         self.llm_manager = llm_manager
+
+        # Initialize multilingual prompt manager
+        self.prompt_manager = MultilingualPromptManager()
         
     async def review_research_quality(self, state: ResearchState) -> ResearchState:
         logger.info("Starting research quality review")
@@ -117,36 +121,18 @@ class ReviewerAgent:
         content = research_data.get("content", "")
         sources = research_data.get("sources", [])
 
-        system_prompt = """You are an expert research reviewer with expertise in evaluating research quality,
-        accuracy, and completeness. Provide detailed, constructive feedback on research content.
+        # Get language code from task
+        language_code = task_config.language if hasattr(task_config, 'language') else "en"
 
-        IMPORTANT: You must respond with a valid JSON object only. Do not include any markdown formatting,
-        code blocks, or additional text outside the JSON."""
-
-        user_prompt = f"""Research Topic: {topic}
-Main Research Query: {task_config.query}
-
-Research Content:
-{content[:2000]}...
-
-Number of Sources: {len(sources)}
-
-Please evaluate this research section on the following criteria:
-1. Content Quality (depth, accuracy, relevance)
-2. Source Coverage (sufficient sources, credible sources)
-3. Logical Structure and Flow
-4. Completeness of Topic Coverage
-5. Alignment with Main Research Query
-
-Provide your review as a JSON object:
-{{
-    "topic": "{topic}",
-    "quality_score": 0.0-1.0,
-    "strengths": ["strength 1", "strength 2", ...],
-    "weaknesses": ["weakness 1", "weakness 2", ...],
-    "suggestions": ["suggestion 1", "suggestion 2", ...],
-    "overall_assessment": "Brief overall assessment"
-}}"""
+        # Get localized prompts
+        system_prompt, user_prompt = self.prompt_manager.format_prompt(
+            PromptType.RESEARCH_REVIEW,
+            language_code=language_code,
+            topic=topic,
+            query=task_config.query,
+            content=content[:2000] + "..." if len(content) > 2000 else content,
+            source_count=len(sources)
+        )
 
         try:
             response = await self.llm_manager.generate_with_fallback(

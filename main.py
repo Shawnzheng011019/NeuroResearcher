@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 import argparse
 import json
 
-from config import get_config, get_task_config, TaskConfig
+from config import get_config, get_task_config, TaskConfig, Tone
 from graph import create_research_workflow
 from state import ResearchState
 
@@ -173,7 +173,7 @@ async def main():
     parser.add_argument("--language", "-l", default="en",
                        choices=["en", "zh-cn", "zh-tw", "ja", "ko"],
                        help="Output language")
-    parser.add_argument("--citation-style", default="apa",
+    parser.add_argument("--citation-style", default="ieee",
                        choices=["apa", "mla", "chicago", "ieee", "harvard"],
                        help="Citation style")
     
@@ -257,7 +257,7 @@ async def example_advanced_research():
             "Cite all sources properly"
         ],
         model="gpt-4o",
-        tone="analytical",
+        tone=Tone.ANALYTICAL,
         verbose=True
     )
     

@@ -306,7 +306,22 @@ class ResearchWorkflow:
 
     async def run_research(self, task_config: TaskConfig, thread_id: Optional[str] = None) -> Dict[str, Any]:
         logger.info(f"Starting research workflow for query: {task_config.query}")
-        
+
+        # Set language for all agents' prompt managers
+        language_code = getattr(task_config, 'language', 'en')
+        logger.info(f"Setting workflow language to: {language_code}")
+
+        # Set language for all agents that have prompt managers
+        agents_with_prompts = [
+            self.researcher, self.editor, self.writer,
+            self.reviewer, self.reviser
+        ]
+
+        for agent in agents_with_prompts:
+            if hasattr(agent, 'prompt_manager'):
+                agent.prompt_manager.set_language(language_code)
+                logger.debug(f"Set language {language_code} for {agent.__class__.__name__}")
+
         # Create initial state
         initial_state = create_initial_research_state(task_config)
         

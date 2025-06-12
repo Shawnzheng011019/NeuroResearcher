@@ -7,6 +7,7 @@ from datetime import datetime
 from tools.llm_tools import LLMManager
 from state import ResearchState, DraftState
 from config import Config
+from localization.prompt_manager import MultilingualPromptManager, PromptType
 
 logger = logging.getLogger(__name__)
 
@@ -15,6 +16,9 @@ class EditorAgent:
     def __init__(self, config: Config, llm_manager: LLMManager):
         self.config = config
         self.llm_manager = llm_manager
+
+        # Initialize multilingual prompt manager
+        self.prompt_manager = MultilingualPromptManager()
         
     async def plan_research_outline(self, state: ResearchState) -> ResearchState:
         query = state["task"].query
@@ -24,8 +28,11 @@ class EditorAgent:
         logger.info(f"Planning research outline for query: {query}")
         
         try:
+            # Get language code from task
+            language_code = state["task"].language if hasattr(state["task"], 'language') else "en"
+
             # Generate research outline
-            outline_data = await self._generate_outline(query, initial_research, max_sections)
+            outline_data = await self._generate_outline(query, initial_research, max_sections, language_code)
             
             if outline_data:
                 state["title"] = outline_data.get("title", query)
@@ -37,9 +44,15 @@ class EditorAgent:
             else:
                 logger.warning("Failed to generate research outline")
                 state["errors"].append("Failed to generate research outline")
-                # Fallback: create basic sections
+                # Fallback: create basic sections with localized titles
                 state["title"] = query
-                state["sections"] = [f"Analysis of {query}", f"Key Findings", f"Implications"]
+
+                # Get localized section titles using section_titles
+                analysis_title = self.prompt_manager.language_manager.get_section_title("analysis", language_code)
+                findings_title = self.prompt_manager.language_manager.get_section_title("findings", language_code)
+                discussion_title = self.prompt_manager.language_manager.get_section_title("discussion", language_code)
+
+                state["sections"] = [f"{analysis_title} {query}", findings_title, discussion_title]
                 state["date"] = datetime.now().strftime("%Y-%m-%d")
             
             return state
@@ -158,35 +171,15 @@ class EditorAgent:
             draft_state["review"] = f"Review failed: {str(e)}"
             return draft_state
     
-    async def _generate_outline(self, query: str, initial_research: str, max_sections: int) -> Optional[Dict[str, Any]]:
-        system_prompt = """You are an expert research editor responsible for creating comprehensive research outlines.
-        Your task is to analyze initial research findings and create a well-structured outline for a research report.
-
-CRITICAL: You MUST respond with ONLY valid JSON. Do not include any explanatory text, markdown formatting, or additional content. Your entire response must be parseable as JSON."""
-
-        user_prompt = f"""Research Query: {query}
-
-Initial Research Summary:
-{initial_research}
-
-Based on the research query and initial findings, create a comprehensive research outline with:
-1. A clear, descriptive title for the research report
-2. {max_sections} main section headers that logically organize the research topic
-3. Sections should focus on substantive research topics, NOT introduction, conclusion, or references
-
-RESPOND WITH ONLY THIS JSON STRUCTURE (no other text):
-{{
-    "title": "Research Report Title",
-    "sections": ["Section 1 Title", "Section 2 Title", "Section 3 Title"]
-}}
-
-Requirements for sections:
-- Comprehensive and cover key aspects of the topic
-- Logically ordered
-- Specific enough to guide focused research
-- Relevant to answering the main research question
-
-IMPORTANT: Your response must start with {{ and end with }}. No explanations, no markdown, no additional text."""
+    async def _generate_outline(self, query: str, initial_research: str, max_sections: int, language_code: Optional[str] = None) -> Optional[Dict[str, Any]]:
+        # Get localized prompts
+        system_prompt, user_prompt = self.prompt_manager.format_prompt(
+            PromptType.OUTLINE_GENERATION,
+            language_code=language_code,
+            query=query,
+            initial_research=initial_research,
+            max_sections=max_sections
+        )
         
         try:
             response = await self.llm_manager.generate_with_fallback(
@@ -248,31 +241,18 @@ IMPORTANT: Your response must start with {{ and end with }}. No explanations, no
     
     async def _review_draft(self, topic: str, draft_content: Dict[str, Any], task_config) -> Dict[str, Any]:
         content = draft_content.get("content", "")
-        
-        system_prompt = """You are an expert editor and reviewer. Your task is to review research draft content 
-        and provide constructive feedback to improve quality, accuracy, and completeness."""
-        
-        user_prompt = f"""Topic: {topic}
-Research Query Context: {task_config.query}
 
-Draft Content:
-{content}
+        # Get language code from task
+        language_code = task_config.language if hasattr(task_config, 'language') else "en"
 
-Please review this draft and provide feedback on:
-1. Content quality and depth
-2. Accuracy and factual consistency
-3. Logical structure and flow
-4. Completeness of coverage
-5. Writing clarity and style
-
-Return your response as a JSON object:
-{{
-    "needs_revision": true/false,
-    "feedback": "Detailed feedback and suggestions for improvement",
-    "quality_score": 0.0-1.0
-}}
-
-If the draft is of good quality and doesn't need major revisions, set needs_revision to false."""
+        # Get localized prompts
+        system_prompt, user_prompt = self.prompt_manager.format_prompt(
+            PromptType.EDITOR_DRAFT_REVIEW,
+            language_code=language_code,
+            topic=topic,
+            query=task_config.query,
+            content=content
+        )
         
         try:
             response = await self.llm_manager.generate_with_fallback(

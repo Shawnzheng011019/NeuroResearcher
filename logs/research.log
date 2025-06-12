@@ -29,3 +29,539 @@
 2025-06-11 14:06:56,264 - agents.reviewer - ERROR - Failed to parse review JSON for Implications: Expecting value: line 1 column 1 (char 0)
 2025-06-11 14:07:41,867 - agents.reviewer - ERROR - Failed to parse final review JSON: Expecting value: line 1 column 1 (char 0)
 2025-06-11 14:07:41,873 - __main__ - ERROR - Unexpected error: 'TaskConfig' object has no attribute 'get'
+2025-06-12 12:00:38,621 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/559232570: HTTP 403
+2025-06-12 12:00:38,624 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 12:00:38,687 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 12:00:38,705 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/49327460796: HTTP 403
+2025-06-12 12:00:38,834 - agents.researcher - WARNING - No research content found from any source
+2025-06-12 12:00:56,032 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868/answers/updated: HTTP 403
+2025-06-12 12:00:56,073 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 12:01:04,638 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/26253988349: HTTP 403
+2025-06-12 12:01:07,069 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868/answers/updated: HTTP 403
+2025-06-12 12:01:07,098 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 12:01:09,573 - tools.scraper_tools - ERROR - Error scraping https://peerj.com/articles/cs-1905.pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 12:01:12,187 - tools.scraper_tools - ERROR - Error scraping https://arxiv.org/pdf/2209.00796v5: 'utf-8' codec can't decode byte 0x8f in position 10: invalid start byte
+2025-06-12 12:01:15,237 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/667681466: HTTP 403
+2025-06-12 12:01:15,238 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/630503807: HTTP 403
+2025-06-12 12:01:17,096 - tools.scraper_tools - WARNING - Failed to scrape https://www.sciencedirect.com/science/article/pii/S2949719124000074: HTTP 403
+2025-06-12 12:01:17,187 - tools.scraper_tools - ERROR - Error scraping https://arxiv.org/pdf/2308.13142: 'utf-8' codec can't decode byte 0x8f in position 10: invalid start byte
+2025-06-12 12:01:24,959 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/1892013703236403830: HTTP 403
+2025-06-12 12:01:25,116 - tools.scraper_tools - WARNING - Failed to scrape https://www.researchgate.net/publication/369477230_A_Survey_on_Audio_Diffusion_Models_Text_To_Speech_Synthesis_and_Enhancement_in_Generative_AI: HTTP 403
+2025-06-12 12:01:25,156 - tools.scraper_tools - WARNING - Failed to scrape https://www.sciencedirect.com/science/article/pii/S0925231224016825: HTTP 403
+2025-06-12 12:01:25,529 - tools.scraper_tools - WARNING - Failed to scrape https://biolecta.com/articles/significance-diffusion-models-machine-learning/: HTTP 403
+2025-06-12 12:01:35,905 - tools.scraper_tools - WARNING - Failed to scrape https://www.sciencedirect.com/science/article/pii/S1361841523001068: HTTP 403
+2025-06-12 12:01:36,075 - tools.scraper_tools - WARNING - Failed to scrape https://dl.acm.org/doi/10.1145/3729220: HTTP 403
+2025-06-12 12:01:43,698 - tools.scraper_tools - WARNING - Failed to scrape https://academic.oup.com/nsr/article/11/12/nwae348/7810289: HTTP 403
+2025-06-12 12:01:53,490 - tools.scraper_tools - ERROR - Error scraping https://arxiv.org/pdf/2408.12128: 'utf-8' codec can't decode byte 0x8f in position 10: invalid start byte
+2025-06-12 12:02:08,301 - tools.scraper_tools - ERROR - Error scraping https://openaccess.thecvf.com/content/CVPR2024W/GCV/papers/Weng_ART-V_Auto-Regressive_Text-to-Video_Generation_with_Diffusion_Models_CVPRW_2024_paper.pdf: 'utf-8' codec can't decode byte 0xbf in position 10: invalid start byte
+2025-06-12 12:02:11,109 - tools.scraper_tools - WARNING - Failed to scrape https://dzone.com/articles/benefits-and-limitations-of-diffusion-models: HTTP 403
+2025-06-12 14:07:36,697 - localization.prompt_manager - INFO - Loaded prompts for language: zh-tw
+2025-06-12 14:07:36,698 - localization.prompt_manager - INFO - Loaded prompts for language: ko
+2025-06-12 14:07:36,700 - localization.prompt_manager - INFO - Loaded prompts for language: zh-cn
+2025-06-12 14:07:36,702 - localization.prompt_manager - INFO - Loaded prompts for language: ja
+2025-06-12 14:07:36,705 - localization.prompt_manager - INFO - Loaded prompts for language: en
+2025-06-12 14:07:36,715 - localization.prompt_manager - INFO - Loaded prompts for language: zh-tw
+2025-06-12 14:07:36,716 - localization.prompt_manager - INFO - Loaded prompts for language: ko
+2025-06-12 14:07:36,717 - localization.prompt_manager - INFO - Loaded prompts for language: zh-cn
+2025-06-12 14:07:36,718 - localization.prompt_manager - INFO - Loaded prompts for language: ja
+2025-06-12 14:07:36,719 - localization.prompt_manager - INFO - Loaded prompts for language: en
+2025-06-12 14:07:36,725 - localization.prompt_manager - INFO - Loaded prompts for language: zh-tw
+2025-06-12 14:07:36,726 - localization.prompt_manager - INFO - Loaded prompts for language: ko
+2025-06-12 14:07:36,727 - localization.prompt_manager - INFO - Loaded prompts for language: zh-cn
+2025-06-12 14:07:36,728 - localization.prompt_manager - INFO - Loaded prompts for language: ja
+2025-06-12 14:07:36,729 - localization.prompt_manager - INFO - Loaded prompts for language: en
+2025-06-12 14:07:36,756 - __main__ - INFO - Starting research for query: 扩散模型在哪些任务效果比较好？
+2025-06-12 14:07:36,757 - graph - INFO - Starting research workflow for query: 扩散模型在哪些任务效果比较好？
+2025-06-12 14:07:36,777 - graph - INFO - Executing orchestrator initialization node
+2025-06-12 14:07:36,781 - graph - INFO - Executing initial research node
+2025-06-12 14:07:36,781 - agents.researcher - INFO - Starting initial research for query: 扩散模型在哪些任务效果比较好？
+2025-06-12 14:07:38,373 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:07:38,387 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query '扩散模型在哪些任务效果比较好？'
+2025-06-12 14:07:38,679 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 14:07:38,707 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 14:07:39,290 - tools.scraper_tools - INFO - Successfully scraped: https://blog.csdn.net/qq_41739364/article/details/134926181
+2025-06-12 14:07:39,476 - tools.scraper_tools - INFO - Successfully scraped: https://blog.csdn.net/m0_65481401/article/details/144916283
+2025-06-12 14:07:40,284 - tools.scraper_tools - INFO - Successfully scraped: https://mmssai.com/archives/22384
+2025-06-12 14:07:40,285 - tools.scraper_tools - INFO - Scraped 5 out of 5 URLs successfully
+2025-06-12 14:07:40,286 - tools.scraper_tools - INFO - Extracted 0 relevant content pieces from 5 scraped pages
+2025-06-12 14:07:40,286 - agents.researcher - INFO - Found 0 relevant web sources
+2025-06-12 14:07:40,286 - agents.researcher - WARNING - No research content found from any source
+2025-06-12 14:07:40,287 - graph - INFO - Executing plan outline node
+2025-06-12 14:07:40,287 - agents.editor - INFO - Planning research outline for query: 扩散模型在哪些任务效果比较好？
+2025-06-12 14:07:43,112 - tools.llm_tools - INFO - OpenAI API call cost: $0.0021 (Total: $0.0021)
+2025-06-12 14:07:43,112 - agents.editor - INFO - Successfully generated outline with 3 sections
+2025-06-12 14:07:43,112 - agents.editor - INFO - Research outline planned with 3 sections
+2025-06-12 14:07:43,114 - graph - INFO - Executing human review plan node
+2025-06-12 14:07:43,114 - agents.human - INFO - Human agent reviewing research plan
+2025-06-12 14:07:43,114 - agents.human - INFO - Human feedback not requested, skipping review
+2025-06-12 14:07:43,116 - graph - INFO - Executing parallel research node
+2025-06-12 14:07:43,116 - agents.editor - INFO - Managing parallel research for 3 sections
+2025-06-12 14:07:43,116 - agents.researcher - INFO - Conducting deep research on topic: Applications of Diffusion Models in Image Generation
+2025-06-12 14:07:43,117 - agents.researcher - INFO - Conducting deep research on topic: Performance of Diffusion Models in Text Generation and Processing
+2025-06-12 14:07:43,119 - agents.researcher - INFO - Conducting deep research on topic: Diffusion Models in Scientific and Industrial Applications
+2025-06-12 14:07:45,022 - tools.llm_tools - INFO - OpenAI API call cost: $0.0001 (Total: $0.0001)
+2025-06-12 14:07:47,522 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:07:47,524 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Diffusion models applications in scientific research effectiveness'
+2025-06-12 14:07:47,530 - tools.llm_tools - INFO - OpenAI API call cost: $0.0001 (Total: $0.0001)
+2025-06-12 14:07:49,271 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:07:49,274 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Diffusion models image generation applications review'
+2025-06-12 14:07:49,276 - tools.llm_tools - INFO - OpenAI API call cost: $0.0001 (Total: $0.0002)
+2025-06-12 14:07:51,105 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:07:51,109 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Diffusion models performance in text generation tasks comparison'
+2025-06-12 14:07:51,290 - tools.scraper_tools - WARNING - Failed to scrape https://dl.acm.org/doi/full/10.1145/3626235: HTTP 403
+2025-06-12 14:07:51,293 - tools.scraper_tools - WARNING - Failed to scrape https://dl.acm.org/doi/full/10.1145/3626235: HTTP 403
+2025-06-12 14:07:51,583 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2209.00796
+2025-06-12 14:07:51,618 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2209.00796
+2025-06-12 14:07:51,715 - tools.scraper_tools - INFO - Successfully scraped: https://pmc.ncbi.nlm.nih.gov/articles/PMC10909201/
+2025-06-12 14:07:51,764 - tools.scraper_tools - INFO - Successfully scraped: https://pmc.ncbi.nlm.nih.gov/articles/PMC11562846/
+2025-06-12 14:07:51,765 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:07:51,766 - tools.scraper_tools - INFO - Extracted 2 relevant content pieces from 3 scraped pages
+2025-06-12 14:07:53,456 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:07:53,459 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Diffusion models in industrial applications case studies'
+2025-06-12 14:07:53,464 - tools.scraper_tools - WARNING - Failed to scrape https://peerj.com/articles/cs-1905.pdf: HTTP 400
+2025-06-12 14:07:53,759 - tools.scraper_tools - INFO - Successfully scraped: https://aclanthology.org/2023.findings-acl.721/
+2025-06-12 14:07:53,760 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:07:53,760 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:07:55,546 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:07:55,555 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Applications of diffusion models in natural language processing'
+2025-06-12 14:07:55,558 - tools.scraper_tools - WARNING - Failed to scrape https://onlinelibrary.wiley.com/doi/10.1002/9781119756231.ch8: HTTP 403
+2025-06-12 14:07:55,584 - tools.scraper_tools - INFO - Successfully scraped: https://insights.daffodilsw.com/blog/all-you-need-to-know-about-diffusion-models
+2025-06-12 14:07:55,964 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2305.14671
+2025-06-12 14:07:56,202 - tools.scraper_tools - INFO - Successfully scraped: https://ar5iv.labs.arxiv.org/html/2305.14671
+2025-06-12 14:07:56,264 - tools.scraper_tools - INFO - Successfully scraped: https://link.springer.com/article/10.1007/s10462-025-11110-3
+2025-06-12 14:07:56,265 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:07:56,265 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:07:57,923 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:07:57,926 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Comparative analysis diffusion models image generation performance'
+2025-06-12 14:07:57,946 - tools.scraper_tools - INFO - Successfully scraped: https://archive.org/details/industrialmathem0000fulf
+2025-06-12 14:07:57,958 - tools.scraper_tools - INFO - Successfully scraped: https://www.analyticsvidhya.com/blog/2023/09/exploring-diffusion-models-in-nlp-beyond-gans-and-vaes/
+2025-06-12 14:07:57,959 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:07:57,959 - tools.scraper_tools - INFO - Extracted 0 relevant content pieces from 3 scraped pages
+2025-06-12 14:07:59,768 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:07:59,771 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Comparative analysis of diffusion models in image generation tasks'
+2025-06-12 14:07:59,771 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:07:59,772 - tools.scraper_tools - INFO - Extracted 2 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:01,446 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:08:01,449 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Evaluation of diffusion models for text summarization'
+2025-06-12 14:08:01,820 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2407.10998
+2025-06-12 14:08:02,019 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2408.08751
+2025-06-12 14:08:02,046 - tools.scraper_tools - INFO - Successfully scraped: https://www.ewadirect.com/proceedings/ace/article/view/16704
+2025-06-12 14:08:02,238 - tools.scraper_tools - INFO - Successfully scraped: https://pmc.ncbi.nlm.nih.gov/articles/PMC10909201/
+2025-06-12 14:08:02,261 - tools.scraper_tools - INFO - Successfully scraped: https://www.ewadirect.com/proceedings/ace/article/view/16704
+2025-06-12 14:08:02,453 - tools.scraper_tools - INFO - Successfully scraped: https://ieeexplore.ieee.org/document/10895355
+2025-06-12 14:08:03,063 - tools.scraper_tools - INFO - Successfully scraped: https://medium.com/@Suraj6708/diffusion-models-vs-gans-who-wins-the-race-of-image-generation-024f4c80ecd1
+2025-06-12 14:08:03,064 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:08:03,064 - tools.scraper_tools - INFO - Extracted 2 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:04,740 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:08:04,746 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Diffusion models advantages disadvantages in image synthesis'
+2025-06-12 14:08:04,941 - tools.scraper_tools - WARNING - Failed to scrape https://dzone.com/articles/benefits-and-limitations-of-diffusion-models: HTTP 403
+2025-06-12 14:08:04,987 - tools.scraper_tools - INFO - Successfully scraped: https://link.springer.com/article/10.1007/s10462-025-11110-3
+2025-06-12 14:08:04,989 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:08:04,989 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:06,675 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:08:06,679 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Diffusion models performance in drug discovery and molecular design'
+2025-06-12 14:08:06,716 - tools.scraper_tools - INFO - Successfully scraped: https://aclanthology.org/2023.findings-acl.828/
+2025-06-12 14:08:06,723 - tools.scraper_tools - INFO - Successfully scraped: https://analyticsindiamag.com/deep-tech/diffusion-models-vs-gans-which-one-to-choose-for-image-synthesis/
+2025-06-12 14:08:06,725 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:08:06,725 - tools.scraper_tools - INFO - Extracted 2 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:08,504 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:08:08,507 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Impact of diffusion models on sentiment analysis in text'
+2025-06-12 14:08:08,536 - tools.scraper_tools - INFO - Successfully scraped: https://ieeexplore.ieee.org/document/10263208
+2025-06-12 14:08:08,542 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:08:08,542 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:10,533 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:08:10,537 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Recent advancements diffusion models for creative image generation'
+2025-06-12 14:08:10,601 - tools.scraper_tools - WARNING - Failed to scrape https://pubs.acs.org/doi/10.1021/acs.jcim.4c01107: HTTP 403
+2025-06-12 14:08:10,790 - tools.scraper_tools - INFO - Successfully scraped: https://myscale.com/blog/future-advancements-diffusion-models-image-generation/
+2025-06-12 14:08:10,793 - tools.scraper_tools - WARNING - Failed to scrape https://www.sciencedirect.com/science/article/pii/S1568494624011207: HTTP 403
+2025-06-12 14:08:11,776 - tools.scraper_tools - INFO - Successfully scraped: https://www.ewadirect.com/proceedings/ace/article/view/16704
+2025-06-12 14:08:11,850 - tools.scraper_tools - ERROR - Error scraping https://arxiv.org/pdf/2402.15289: 'utf-8' codec can't decode byte 0x8f in position 10: invalid start byte
+2025-06-12 14:08:11,894 - tools.scraper_tools - INFO - Successfully scraped: https://pmc.ncbi.nlm.nih.gov/articles/PMC11481093/
+2025-06-12 14:08:12,048 - tools.scraper_tools - INFO - Successfully scraped: https://pmc.ncbi.nlm.nih.gov/articles/PMC10909201/
+2025-06-12 14:08:12,049 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:08:12,049 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:13,845 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:08:13,849 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Diffusion models vs. traditional models in text processing effectiveness'
+2025-06-12 14:08:14,013 - tools.scraper_tools - INFO - Successfully scraped: https://link.springer.com/article/10.1007/s10462-025-11110-3
+2025-06-12 14:08:14,020 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:08:14,021 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:15,772 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:08:15,776 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Use cases diffusion models in art and design fields'
+2025-06-12 14:08:15,828 - tools.scraper_tools - INFO - Successfully scraped: https://pmc.ncbi.nlm.nih.gov/articles/PMC10909201/
+2025-06-12 14:08:15,832 - tools.scraper_tools - WARNING - Failed to scrape https://peerj.com/articles/cs-1905.pdf: HTTP 400
+2025-06-12 14:08:15,975 - tools.scraper_tools - ERROR - Error scraping https://arxiv.org/pdf/2505.15045: 'utf-8' codec can't decode byte 0xbf in position 10: invalid start byte
+2025-06-12 14:08:15,976 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:08:15,977 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:16,111 - tools.scraper_tools - INFO - Successfully scraped: https://insights.daffodilsw.com/blog/all-you-need-to-know-about-diffusion-models
+2025-06-12 14:08:16,455 - tools.scraper_tools - INFO - Successfully scraped: https://www.nature.com/articles/s43588-024-00737-x
+2025-06-12 14:08:16,457 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:08:16,458 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:18,264 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:08:18,268 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Real-world applications of diffusion models in engineering and manufacturing'
+2025-06-12 14:08:18,282 - tools.scraper_tools - INFO - Successfully scraped: https://scale.com/guides/diffusion-models-guide
+2025-06-12 14:08:18,583 - tools.scraper_tools - INFO - Successfully scraped: https://insights.daffodilsw.com/blog/all-you-need-to-know-about-diffusion-models
+2025-06-12 14:08:18,783 - tools.scraper_tools - INFO - Successfully scraped: https://www.simform.com/blog/diffusion-models/
+2025-06-12 14:08:18,785 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:08:18,785 - tools.scraper_tools - INFO - Extracted 0 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:19,198 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/html/2408.10207v1
+2025-06-12 14:08:19,502 - tools.scraper_tools - INFO - Successfully scraped: https://hardiks.medium.com/real-world-applications-of-diffusion-models-4f6c4030829a
+2025-06-12 14:08:19,504 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:08:19,505 - tools.scraper_tools - INFO - Extracted 2 relevant content pieces from 3 scraped pages
+2025-06-12 14:08:27,991 - tools.llm_tools - INFO - OpenAI API call cost: $0.0163 (Total: $0.0184)
+2025-06-12 14:08:27,991 - agents.researcher - INFO - Deep research completed for topic: Performance of Diffusion Models in Text Generation and Processing. Found 4 unique sources
+2025-06-12 14:08:29,017 - tools.llm_tools - INFO - OpenAI API call cost: $0.0155 (Total: $0.0339)
+2025-06-12 14:08:29,017 - agents.researcher - INFO - Deep research completed for topic: Applications of Diffusion Models in Image Generation. Found 5 unique sources
+2025-06-12 14:08:29,504 - tools.llm_tools - INFO - OpenAI API call cost: $0.0162 (Total: $0.0502)
+2025-06-12 14:08:29,504 - agents.researcher - INFO - Deep research completed for topic: Diffusion Models in Scientific and Industrial Applications. Found 6 unique sources
+2025-06-12 14:08:29,505 - agents.editor - INFO - Parallel research completed for 3 sections
+2025-06-12 14:08:29,507 - graph - INFO - Executing review research node
+2025-06-12 14:08:29,507 - agents.reviewer - INFO - Starting research quality review
+2025-06-12 14:08:34,781 - tools.llm_tools - INFO - OpenAI API call cost: $0.0075 (Total: $0.0577)
+2025-06-12 14:08:42,143 - tools.llm_tools - INFO - OpenAI API call cost: $0.0075 (Total: $0.0652)
+2025-06-12 14:08:48,503 - tools.llm_tools - INFO - OpenAI API call cost: $0.0077 (Total: $0.0729)
+2025-06-12 14:08:57,722 - tools.llm_tools - INFO - OpenAI API call cost: $0.0078 (Total: $0.0807)
+2025-06-12 14:08:57,724 - agents.reviewer - INFO - Research quality review completed
+2025-06-12 14:08:57,726 - graph - INFO - Executing write report node
+2025-06-12 14:08:57,727 - agents.writer - INFO - Starting final report writing
+2025-06-12 14:09:07,189 - tools.llm_tools - INFO - OpenAI API call cost: $0.0078 (Total: $0.0886)
+2025-06-12 14:09:23,228 - tools.llm_tools - INFO - OpenAI API call cost: $0.0160 (Total: $0.1046)
+2025-06-12 14:09:23,228 - agents.writer - INFO - Final report writing completed
+2025-06-12 14:09:23,230 - graph - INFO - Executing human review report node
+2025-06-12 14:09:23,230 - agents.human - INFO - Human agent reviewing final report
+2025-06-12 14:09:23,230 - agents.human - INFO - Human feedback not requested for final report
+2025-06-12 14:09:23,233 - graph - INFO - Executing review report node
+2025-06-12 14:09:23,233 - agents.reviewer - INFO - Starting final report review
+2025-06-12 14:09:28,356 - tools.llm_tools - INFO - OpenAI API call cost: $0.0088 (Total: $0.1133)
+2025-06-12 14:09:28,356 - agents.reviewer - INFO - Final report review completed
+2025-06-12 14:09:28,358 - graph - INFO - Executing publish report node
+2025-06-12 14:09:28,358 - agents.publisher - INFO - Starting report publishing
+2025-06-12 14:09:28,360 - tools.document_tools - INFO - Markdown generated successfully: outputs/Effectiveness_of_Diffusion_Models_in_Various_Tasks_20250612_140928.md
+2025-06-12 14:09:28,360 - agents.publisher - INFO - Successfully published in formats: markdown
+2025-06-12 14:09:28,362 - graph - INFO - Executing orchestrator finalize node
+2025-06-12 14:09:28,362 - agents.orchestrator - INFO - Orchestrator finalizing research task
+2025-06-12 14:09:28,362 - agents.orchestrator - INFO - Research task task_1749708456 finalized successfully
+2025-06-12 14:09:28,364 - graph - INFO - Research workflow completed. Total cost: $0.1135
+2025-06-12 14:09:28,365 - __main__ - INFO - Research completed successfully
+2025-06-12 14:12:56,569 - localization.prompt_manager - INFO - Loaded prompts for language: zh-tw
+2025-06-12 14:12:56,571 - localization.prompt_manager - INFO - Loaded prompts for language: ko
+2025-06-12 14:12:56,573 - localization.prompt_manager - INFO - Loaded prompts for language: zh-cn
+2025-06-12 14:12:56,575 - localization.prompt_manager - INFO - Loaded prompts for language: ja
+2025-06-12 14:12:56,577 - localization.prompt_manager - INFO - Loaded prompts for language: en
+2025-06-12 14:12:56,585 - localization.prompt_manager - INFO - Loaded prompts for language: zh-tw
+2025-06-12 14:12:56,586 - localization.prompt_manager - INFO - Loaded prompts for language: ko
+2025-06-12 14:12:56,587 - localization.prompt_manager - INFO - Loaded prompts for language: zh-cn
+2025-06-12 14:12:56,588 - localization.prompt_manager - INFO - Loaded prompts for language: ja
+2025-06-12 14:12:56,589 - localization.prompt_manager - INFO - Loaded prompts for language: en
+2025-06-12 14:12:56,604 - localization.prompt_manager - INFO - Loaded prompts for language: zh-tw
+2025-06-12 14:12:56,605 - localization.prompt_manager - INFO - Loaded prompts for language: ko
+2025-06-12 14:12:56,608 - localization.prompt_manager - INFO - Loaded prompts for language: zh-cn
+2025-06-12 14:12:56,610 - localization.prompt_manager - INFO - Loaded prompts for language: ja
+2025-06-12 14:12:56,611 - localization.prompt_manager - INFO - Loaded prompts for language: en
+2025-06-12 14:12:56,661 - __main__ - INFO - Starting research for query: 扩散模型在哪些任务效果比较好？
+2025-06-12 14:12:56,662 - graph - INFO - Starting research workflow for query: 扩散模型在哪些任务效果比较好？
+2025-06-12 14:12:56,711 - graph - INFO - Executing orchestrator initialization node
+2025-06-12 14:12:56,715 - graph - INFO - Executing initial research node
+2025-06-12 14:12:56,716 - agents.researcher - INFO - Starting initial research for query: 扩散模型在哪些任务效果比较好？
+2025-06-12 14:12:58,072 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:12:58,089 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query '扩散模型在哪些任务效果比较好？'
+2025-06-12 14:12:58,236 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 14:12:58,245 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 14:12:58,823 - tools.scraper_tools - INFO - Successfully scraped: https://blog.csdn.net/qq_41739364/article/details/134926181
+2025-06-12 14:12:58,921 - tools.scraper_tools - INFO - Successfully scraped: https://blog.csdn.net/m0_65481401/article/details/144916283
+2025-06-12 14:12:58,947 - tools.scraper_tools - INFO - Successfully scraped: https://mmssai.com/archives/22384
+2025-06-12 14:12:58,948 - tools.scraper_tools - INFO - Scraped 5 out of 5 URLs successfully
+2025-06-12 14:12:58,948 - tools.scraper_tools - INFO - Extracted 0 relevant content pieces from 5 scraped pages
+2025-06-12 14:12:58,948 - agents.researcher - INFO - Found 0 relevant web sources
+2025-06-12 14:12:58,948 - agents.researcher - WARNING - No research content found from any source
+2025-06-12 14:12:58,949 - graph - INFO - Executing plan outline node
+2025-06-12 14:12:58,949 - agents.editor - INFO - Planning research outline for query: 扩散模型在哪些任务效果比较好？
+2025-06-12 14:13:02,570 - tools.llm_tools - INFO - OpenAI API call cost: $0.0020 (Total: $0.0020)
+2025-06-12 14:13:02,571 - agents.editor - INFO - Successfully generated outline with 3 sections
+2025-06-12 14:13:02,571 - agents.editor - INFO - Research outline planned with 3 sections
+2025-06-12 14:13:02,574 - graph - INFO - Executing human review plan node
+2025-06-12 14:13:02,574 - agents.human - INFO - Human agent reviewing research plan
+2025-06-12 14:13:02,574 - agents.human - INFO - Human feedback not requested, skipping review
+2025-06-12 14:13:02,578 - graph - INFO - Executing parallel research node
+2025-06-12 14:13:02,578 - agents.editor - INFO - Managing parallel research for 3 sections
+2025-06-12 14:13:02,580 - agents.researcher - INFO - Conducting deep research on topic: Applications of Diffusion Models in Computer Vision
+2025-06-12 14:13:02,582 - agents.researcher - INFO - Conducting deep research on topic: Performance of Diffusion Models in Natural Language Processing
+2025-06-12 14:13:02,583 - agents.researcher - INFO - Conducting deep research on topic: Diffusion Models in Scientific and Industrial Applications
+2025-06-12 14:13:04,206 - tools.llm_tools - INFO - OpenAI API call cost: $0.0001 (Total: $0.0001)
+2025-06-12 14:13:06,414 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:13:06,417 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Diffusion models applications in materials science and their effectiveness'
+2025-06-12 14:13:06,421 - tools.llm_tools - INFO - OpenAI API call cost: $0.0001 (Total: $0.0001)
+2025-06-12 14:13:08,213 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:13:08,242 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Applications of diffusion models in image synthesis and generation'
+2025-06-12 14:13:08,494 - tools.scraper_tools - WARNING - Failed to scrape https://pubs.acs.org/doi/10.1021/acs.jpclett.5c00274: HTTP 403
+2025-06-12 14:13:08,523 - tools.scraper_tools - WARNING - Failed to scrape https://www.science.org/doi/10.1126/sciadv.adt6144: HTTP 403
+2025-06-12 14:13:08,552 - tools.scraper_tools - INFO - Successfully scraped: https://learnopencv.com/image-generation-using-diffusion-models/
+2025-06-12 14:13:08,849 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2209.00796
+2025-06-12 14:13:09,249 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/html/2408.10207v1
+2025-06-12 14:13:09,251 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:09,251 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:11,343 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:13:11,346 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Evaluation of diffusion models in drug discovery and bioinformatics'
+2025-06-12 14:13:11,362 - tools.llm_tools - INFO - OpenAI API call cost: $0.0001 (Total: $0.0002)
+2025-06-12 14:13:13,431 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:13:13,434 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Diffusion models performance comparison with traditional models in natural language processing tasks'
+2025-06-12 14:13:13,475 - tools.scraper_tools - INFO - Successfully scraped: https://link.springer.com/article/10.1007/s10462-025-11110-3
+2025-06-12 14:13:13,478 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:13,478 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:15,522 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:13:15,527 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Performance comparison of diffusion models vs GANs in computer vision tasks'
+2025-06-12 14:13:15,722 - tools.scraper_tools - WARNING - Failed to scrape https://pubs.acs.org/doi/10.1021/acs.jcim.4c01107: HTTP 403
+2025-06-12 14:13:15,871 - tools.scraper_tools - INFO - Successfully scraped: https://ar5iv.labs.arxiv.org/html/2305.14671
+2025-06-12 14:13:15,891 - tools.scraper_tools - INFO - Successfully scraped: https://medium.com/@roelljr/the-ultimate-guide-rnns-vs-transformers-vs-diffusion-models-5e841a8184f3
+2025-06-12 14:13:15,949 - tools.scraper_tools - INFO - Successfully scraped: https://www.sapien.io/blog/gans-vs-diffusion-models-a-comparative-analysis
+2025-06-12 14:13:15,984 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2305.14671
+2025-06-12 14:13:15,986 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:15,986 - tools.scraper_tools - INFO - Extracted 3 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:17,806 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:13:17,808 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Applications of diffusion models in text generation and their effectiveness in NLP'
+2025-06-12 14:13:17,844 - tools.scraper_tools - INFO - Successfully scraped: https://pmc.ncbi.nlm.nih.gov/articles/PMC11481093/
+2025-06-12 14:13:17,847 - tools.scraper_tools - WARNING - Failed to scrape https://www.geeksforgeeks.org/generative-adversarial-networks-gans-vs-diffusion-models/: HTTP 404
+2025-06-12 14:13:18,806 - tools.scraper_tools - WARNING - Failed to scrape https://peerj.com/articles/cs-1905.pdf: HTTP 400
+2025-06-12 14:13:18,931 - tools.scraper_tools - INFO - Successfully scraped: https://pmc.ncbi.nlm.nih.gov/articles/PMC10909201/
+2025-06-12 14:13:19,927 - tools.scraper_tools - ERROR - Error scraping https://mstonham.github.io/Reports/ECG703_Final_Report.pdf: 'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte
+2025-06-12 14:13:19,928 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:19,928 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:21,814 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:13:21,816 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Recent advancements in diffusion models for image denoising and inpainting'
+2025-06-12 14:13:21,869 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2305.14671
+2025-06-12 14:13:21,871 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:21,872 - tools.scraper_tools - INFO - Extracted 2 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:25,718 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:13:25,722 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Case studies of diffusion models in sentiment analysis and their performance metrics'
+2025-06-12 14:13:25,735 - tools.scraper_tools - INFO - Successfully scraped: https://www.nature.com/articles/s44222-023-00114-9
+2025-06-12 14:13:25,739 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:25,739 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:27,597 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:13:27,601 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Comparative analysis of diffusion models in image generation versus traditional methods'
+2025-06-12 14:13:27,862 - tools.scraper_tools - WARNING - Failed to scrape https://www.sciencedirect.com/science/article/pii/S0925231224016825: HTTP 403
+2025-06-12 14:13:27,875 - tools.scraper_tools - WARNING - Failed to scrape https://www.sciencedirect.com/science/article/pii/S1568494624011207: HTTP 403
+2025-06-12 14:13:27,889 - tools.scraper_tools - WARNING - Failed to scrape https://www.researchgate.net/publication/383102332_A_Comparative_Analysis_Between_GAN_and_Diffusion_Models_in_Image_Generation: HTTP 403
+2025-06-12 14:13:28,355 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/html/2408.08751v1
+2025-06-12 14:13:28,617 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2402.15289
+2025-06-12 14:13:28,702 - tools.scraper_tools - INFO - Successfully scraped: https://www.ewadirect.com/proceedings/ace/article/view/16704
+2025-06-12 14:13:28,856 - tools.scraper_tools - INFO - Successfully scraped: https://aclanthology.org/2024.lrec-main.439/
+2025-06-12 14:13:28,915 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/html/2311.16821
+2025-06-12 14:13:28,920 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:28,921 - tools.scraper_tools - INFO - Extracted 0 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:31,064 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:13:31,067 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Impact of diffusion models on industrial processes and manufacturing efficiency'
+2025-06-12 14:13:31,068 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:31,068 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:33,201 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:13:33,203 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Impact of diffusion models on machine translation accuracy in natural language processing'
+2025-06-12 14:13:33,239 - tools.scraper_tools - INFO - Successfully scraped: https://advancesincontinuousanddiscretemodels.springeropen.com/articles/10.1186/s13662-025-03935-7
+2025-06-12 14:13:33,243 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:33,243 - tools.scraper_tools - INFO - Extracted 0 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:35,204 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:13:35,206 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Use of diffusion models in video generation and motion prediction'
+2025-06-12 14:13:35,450 - tools.scraper_tools - WARNING - Failed to scrape https://www.sciencedirect.com/science/article/pii/S0278612525000160: HTTP 403
+2025-06-12 14:13:35,644 - tools.scraper_tools - INFO - Successfully scraped: https://ar5iv.labs.arxiv.org/html/2305.14671
+2025-06-12 14:13:35,706 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2305.14671
+2025-06-12 14:13:35,766 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2206.07696
+2025-06-12 14:13:35,824 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2503.15451
+2025-06-12 14:13:35,865 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2504.16081
+2025-06-12 14:13:35,867 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:35,867 - tools.scraper_tools - INFO - Extracted 3 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:38,287 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 14:13:38,838 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Exploring the role of diffusion models in semantic segmentation and object detection'
+2025-06-12 14:13:38,853 - tools.scraper_tools - INFO - Successfully scraped: https://ai-scholar.tech/en/articles/manufacturing/Generative-Manufacturing-Systems
+2025-06-12 14:13:38,906 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/html/2405.00958v1
+2025-06-12 14:13:38,914 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:38,915 - tools.scraper_tools - INFO - Extracted 0 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:40,934 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:13:41,053 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Case studies of diffusion models in environmental modeling and climate prediction'
+2025-06-12 14:13:41,238 - tools.scraper_tools - WARNING - Failed to scrape https://www.science.org/doi/10.1126/sciadv.adk4489: HTTP 403
+2025-06-12 14:13:41,469 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/abs/2301.05221
+2025-06-12 14:13:41,518 - tools.scraper_tools - INFO - Successfully scraped: https://myscale.com/blog/futuristic-climate-insights-llm-models-focus/
+2025-06-12 14:13:41,890 - tools.scraper_tools - INFO - Successfully scraped: https://ieeexplore.ieee.org/document/10938258
+2025-06-12 14:13:43,298 - tools.scraper_tools - INFO - Successfully scraped: https://www.nature.com/articles/s43247-025-02042-5
+2025-06-12 14:13:43,299 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:43,299 - tools.scraper_tools - INFO - Extracted 1 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:45,629 - tools.scraper_tools - ERROR - Error scraping https://openaccess.thecvf.com/content/ICCV2023/papers/Li_Open-vocabulary_Object_Segmentation_with_Diffusion_Models_ICCV_2023_paper.pdf: 'utf-8' codec can't decode byte 0xbf in position 10: invalid start byte
+2025-06-12 14:13:45,631 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:45,631 - tools.scraper_tools - INFO - Extracted 2 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:48,593 - tools.scraper_tools - ERROR - Error scraping https://aclanthology.org/2024.eacl-srw.25.pdf: 'utf-8' codec can't decode byte 0xd0 in position 10: invalid continuation byte
+2025-06-12 14:13:48,594 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:48,594 - tools.scraper_tools - INFO - Extracted 2 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:51,176 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 14:13:51,308 - tools.search_tools - INFO - DuckDuckGo search completed: 5 results for query 'Evaluation of diffusion models in language understanding tasks: benchmarks and results'
+2025-06-12 14:13:51,667 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/html/2308.12219v3
+2025-06-12 14:13:51,708 - tools.scraper_tools - INFO - Successfully scraped: https://arxiv.org/html/2406.04470v2
+2025-06-12 14:13:52,406 - tools.scraper_tools - INFO - Successfully scraped: https://machinelearning.apple.com/research/scaling-diffusion-language-models
+2025-06-12 14:13:52,407 - tools.scraper_tools - INFO - Scraped 3 out of 3 URLs successfully
+2025-06-12 14:13:52,408 - tools.scraper_tools - INFO - Extracted 2 relevant content pieces from 3 scraped pages
+2025-06-12 14:13:59,286 - tools.llm_tools - INFO - OpenAI API call cost: $0.0158 (Total: $0.0178)
+2025-06-12 14:13:59,286 - agents.researcher - INFO - Deep research completed for topic: Applications of Diffusion Models in Computer Vision. Found 7 unique sources
+2025-06-12 14:14:02,327 - tools.llm_tools - INFO - OpenAI API call cost: $0.0160 (Total: $0.0338)
+2025-06-12 14:14:02,327 - agents.researcher - INFO - Deep research completed for topic: Performance of Diffusion Models in Natural Language Processing. Found 7 unique sources
+2025-06-12 14:14:06,400 - tools.llm_tools - INFO - OpenAI API call cost: $0.0156 (Total: $0.0494)
+2025-06-12 14:14:06,401 - agents.researcher - INFO - Deep research completed for topic: Diffusion Models in Scientific and Industrial Applications. Found 3 unique sources
+2025-06-12 14:14:06,401 - agents.editor - INFO - Parallel research completed for 3 sections
+2025-06-12 14:14:06,404 - graph - INFO - Executing review research node
+2025-06-12 14:14:06,404 - agents.reviewer - INFO - Starting research quality review
+2025-06-12 14:14:11,103 - tools.llm_tools - INFO - OpenAI API call cost: $0.0083 (Total: $0.0577)
+2025-06-12 14:14:16,246 - tools.llm_tools - INFO - OpenAI API call cost: $0.0103 (Total: $0.0680)
+2025-06-12 14:14:23,995 - tools.llm_tools - INFO - OpenAI API call cost: $0.0105 (Total: $0.0785)
+2025-06-12 14:14:30,235 - tools.llm_tools - INFO - OpenAI API call cost: $0.0094 (Total: $0.0879)
+2025-06-12 14:14:30,236 - agents.reviewer - INFO - Research quality review completed
+2025-06-12 14:14:30,238 - graph - INFO - Executing write report node
+2025-06-12 14:14:30,238 - agents.writer - INFO - Starting final report writing
+2025-06-12 14:14:49,523 - tools.llm_tools - INFO - OpenAI API call cost: $0.0074 (Total: $0.0954)
+2025-06-12 14:15:02,505 - tools.llm_tools - INFO - OpenAI API call cost: $0.0112 (Total: $0.1066)
+2025-06-12 14:15:02,507 - agents.writer - INFO - Final report writing completed
+2025-06-12 14:15:02,509 - graph - INFO - Executing human review report node
+2025-06-12 14:15:02,509 - agents.human - INFO - Human agent reviewing final report
+2025-06-12 14:15:02,509 - agents.human - INFO - Human feedback not requested for final report
+2025-06-12 14:15:02,511 - graph - INFO - Executing review report node
+2025-06-12 14:15:02,511 - agents.reviewer - INFO - Starting final report review
+2025-06-12 14:15:07,969 - tools.llm_tools - INFO - OpenAI API call cost: $0.0102 (Total: $0.1168)
+2025-06-12 14:15:07,970 - agents.reviewer - INFO - Final report review completed
+2025-06-12 14:15:07,973 - graph - INFO - Executing publish report node
+2025-06-12 14:15:07,973 - agents.publisher - INFO - Starting report publishing
+2025-06-12 14:15:07,975 - tools.document_tools - INFO - Markdown generated successfully: outputs/Effectiveness_of_Diffusion_Models_Across_Various_Tasks_20250612_141507.md
+2025-06-12 14:15:07,975 - agents.publisher - INFO - Successfully published in formats: markdown
+2025-06-12 14:15:07,979 - graph - INFO - Executing orchestrator finalize node
+2025-06-12 14:15:07,980 - agents.orchestrator - INFO - Orchestrator finalizing research task
+2025-06-12 14:15:07,980 - agents.orchestrator - INFO - Research task task_1749708776 finalized successfully
+2025-06-12 14:15:07,984 - graph - INFO - Research workflow completed. Total cost: $0.1170
+2025-06-12 14:15:07,984 - __main__ - INFO - Research completed successfully
+2025-06-12 14:24:24,353 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/19059364698: HTTP 403
+2025-06-12 14:24:25,448 - agents.researcher - WARNING - No research content found from any source
+2025-06-12 14:24:25,451 - localization.prompt_manager - ERROR - Prompt PromptType.OUTLINE_GENERATION not found for any language
+2025-06-12 14:24:38,654 - agents.editor - ERROR - Failed to parse outline JSON: Expecting value: line 1 column 1 (char 0)
+2025-06-12 14:24:38,655 - agents.editor - ERROR - Raw response that failed to parse: 人工智能（AI）的发展趋势可以从多个角度来分析，包括技术进步、应用场景、道德与法律、以及社会影响等方面。以下是一些主要的趋势：
+
+1. **深度学习与神经网络的进步**：深度学习仍然是推动AI进步的核心技术之一。随着算法的优化和硬件性能的提升，神经网络的训练效率和模型性能不断提高。这使得AI在图像识别、自然语言处理等领域的表现越来越出色。
+
+2. **多模态AI**：未来的AI系统将能够处理和整合多种类型的数据，包括图像、文本、音频和视频等。这种多模态能力有助于开发更加智能和交互性更强的应用。
+
+3. **自监督学习**：自监督学习正在成为AI研究的热点，它不依赖于大量标注数据，而是通过从未标注数据中学习。这可以大大降低训练AI模型所需的数据标注成本。
+
+4. **边缘计算与AI结合**：随着物联网设备的普及，AI正越来越多地被部署在边缘设备上。边缘AI能够在本地设备上进行处理，减少了数据传输的需求，并提高了响应速度。
+
+5. **AI伦理与透明性**：随着AI影响力的扩大，关于AI的伦理问题和可解释性也成为重要课题。开发透明、公平和可解释的AI系统以避免偏见和歧视，是未来AI发展的重
+2025-06-12 14:24:38,655 - agents.editor - WARNING - Failed to generate research outline
+2025-06-12 14:24:46,372 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/19063759476: HTTP 403
+2025-06-12 14:24:49,128 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/1912277059553723326: HTTP 403
+2025-06-12 14:24:51,637 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/652805184: HTTP 403
+2025-06-12 14:24:51,790 - tools.scraper_tools - ERROR - Error scraping http://yjy.people.com.cn/n1/2024/0621/c459074-40261654.html: 'utf-8' codec can't decode byte 0xd6 in position 345: invalid continuation byte
+2025-06-12 14:24:53,660 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/28936242721: HTTP 403
+2025-06-12 14:24:55,701 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/1911197561932476955: HTTP 403
+2025-06-12 14:24:58,753 - tools.scraper_tools - ERROR - Error scraping http://www.caict.ac.cn/kxyj/qwfb/bps/202412/P020241210548865982463.pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 14:25:02,854 - tools.scraper_tools - ERROR - Error scraping https://www.etc.org.cn/UserFiles/Article/file/6385881604196397059193417.pdf: 'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte
+2025-06-12 14:25:02,993 - tools.scraper_tools - ERROR - Error scraping https://assets.kpmg.com/content/dam/kpmg/cn/pdf/zh/2023/12/prospects-for-the-global-transformation-of-artificial-intelligence.pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 14:25:09,266 - tools.scraper_tools - ERROR - Error scraping https://assets.kpmg.com/content/dam/kpmg/cn/pdf/zh/2023/12/prospects-for-the-global-transformation-of-artificial-intelligence.pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 14:25:11,082 - tools.scraper_tools - ERROR - Error scraping https://runwise.oss-accelerate.aliyuncs.com/sites/15/2024/04/创新研报_中国人工智能（AI）2024各行业应用研究报告_大视研究.pdf: 'utf-8' codec can't decode byte 0xa1 in position 10: invalid start byte
+2025-06-12 14:25:13,534 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/22891674018: HTTP 403
+2025-06-12 14:25:14,884 - tools.scraper_tools - ERROR - Error scraping http://www.caict.ac.cn/kxyj/qwfb/ztbg/202312/P020240103531660935078.pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 14:25:16,858 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/607306295: HTTP 403
+2025-06-12 14:25:19,060 - tools.scraper_tools - ERROR - Error scraping https://www.caict.ac.cn/kxyj/qwfb/bps/202412/P020241210548865982463.pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 14:34:48,200 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/19063759476: HTTP 403
+2025-06-12 14:35:09,419 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/680614728: HTTP 403
+2025-06-12 14:35:09,806 - tools.scraper_tools - WARNING - Failed to scrape https://www.shangyexinzhi.com/article/21848572.html: HTTP 427
+2025-06-12 14:35:09,807 - tools.scraper_tools - WARNING - Failed to scrape https://qikan.cqvip.com/Qikan/Article/Detail?id=7110416710: HTTP 412
+2025-06-12 14:35:15,476 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/19085864614: HTTP 403
+2025-06-12 14:35:15,902 - tools.scraper_tools - ERROR - Error scraping https://runwise.oss-accelerate.aliyuncs.com/sites/15/2024/04/创新研报_中国人工智能（AI）2024各行业应用研究报告_大视研究.pdf: 'utf-8' codec can't decode byte 0xa1 in position 10: invalid start byte
+2025-06-12 14:35:37,500 - tools.search_tools - ERROR - DuckDuckGo search failed for query '当前人工智能技术（如深度学习、自然语言处理）的最新创新': https://html.duckduckgo.com/html RuntimeError: error sending request for url (https://html.duckduckgo.com/html): operation timed out
+
+Caused by:
+    operation timed out
+2025-06-12 14:35:37,501 - tools.search_tools - ERROR - All search tools failed for query '当前人工智能技术（如深度学习、自然语言处理）的最新创新'
+2025-06-12 14:35:59,060 - tools.search_tools - ERROR - DuckDuckGo search failed for query '人工智能伦理与法规对技术应用的影响分析': https://lite.duckduckgo.com/lite/ RuntimeError: error sending request for url (https://lite.duckduckgo.com/lite/): operation timed out
+
+Caused by:
+    operation timed out
+2025-06-12 14:35:59,061 - tools.search_tools - ERROR - All search tools failed for query '人工智能伦理与法规对技术应用的影响分析'
+2025-06-12 14:36:20,567 - tools.search_tools - ERROR - DuckDuckGo search failed for query '人工智能与传统技术的融合发展趋势及案例研究': https://lite.duckduckgo.com/lite/ RuntimeError: error sending request for url (https://lite.duckduckgo.com/lite/): operation timed out
+
+Caused by:
+    operation timed out
+2025-06-12 14:36:20,568 - tools.search_tools - ERROR - All search tools failed for query '人工智能与传统技术的融合发展趋势及案例研究'
+2025-06-12 14:36:20,570 - tools.scraper_tools - WARNING - Timeout scraping https://julienflorkin.com/zh-CN/技术/人工智能/人工智能透明度/
+2025-06-12 14:36:42,110 - tools.search_tools - ERROR - DuckDuckGo search failed for query '人工智能技术在社会治理中的应用及其伦理问题': https://lite.duckduckgo.com/lite/ RuntimeError: error sending request for url (https://lite.duckduckgo.com/lite/): operation timed out
+
+Caused by:
+    operation timed out
+2025-06-12 14:36:42,110 - tools.search_tools - ERROR - All search tools failed for query '人工智能技术在社会治理中的应用及其伦理问题'
+2025-06-12 14:37:02,173 - tools.scraper_tools - ERROR - Error scraping https://qks.swupl.edu.cn/docs/2024-07/a269445ef805440c93cc95ab2cc14a96.pdf: 'utf-8' codec can't decode byte 0xa1 in position 11: invalid start byte
+2025-06-12 14:37:16,773 - tools.scraper_tools - ERROR - Error scraping https://yizhe.dmu.edu.cn/data/article/yxyzx/preview/pdf/7-7-likunpeng.pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 14:46:14,125 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 14:46:14,127 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/567829973: HTTP 403
+2025-06-12 14:46:14,517 - agents.researcher - WARNING - No research content found from any source
+2025-06-12 14:46:28,816 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/664122079: HTTP 403
+2025-06-12 14:46:28,817 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562226867: HTTP 403
+2025-06-12 14:46:28,823 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562226867: HTTP 403
+2025-06-12 14:46:28,829 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 14:46:28,838 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/668050341: HTTP 403
+2025-06-12 14:46:36,126 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/651613931: HTTP 403
+2025-06-12 14:46:36,160 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 14:46:36,172 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/599538060: HTTP 403
+2025-06-12 14:46:36,182 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/27321679928: HTTP 403
+2025-06-12 14:46:36,192 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 14:46:41,859 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/11548033509: HTTP 403
+2025-06-12 14:46:41,896 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 14:46:41,897 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 14:46:44,552 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/674001640: HTTP 403
+2025-06-12 14:46:47,019 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 14:46:50,399 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 14:46:53,342 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 14:46:53,819 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf: 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 14:46:55,697 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/11548033509: HTTP 403
+2025-06-12 14:46:55,698 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/612293280: HTTP 403
+2025-06-12 14:46:57,668 - tools.scraper_tools - WARNING - Timeout scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf
+2025-06-12 14:46:59,773 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/267696723: HTTP 403
+2025-06-12 14:46:59,850 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/629334231: HTTP 403
+2025-06-12 14:47:01,930 - tools.scraper_tools - WARNING - Timeout scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf
+2025-06-12 14:47:04,838 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/680451972: HTTP 403
+2025-06-12 14:47:08,841 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/590823641: HTTP 403
+2025-06-12 14:47:08,970 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 14:47:08,970 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 14:47:08,971 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/621963694: HTTP 403
+2025-06-12 14:47:12,865 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 14:47:12,888 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 14:47:12,913 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868/answers/updated: HTTP 403
+2025-06-12 14:47:15,125 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:00:04,068 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/567829973: HTTP 403
+2025-06-12 15:00:04,149 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 15:00:04,150 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/599538060: HTTP 403
+2025-06-12 15:00:04,346 - agents.researcher - WARNING - No research content found from any source
+2025-06-12 15:00:18,591 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 15:00:18,593 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562226867: HTTP 403
+2025-06-12 15:00:18,597 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562226867: HTTP 403
+2025-06-12 15:00:18,598 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/599538060: HTTP 403
+2025-06-12 15:00:18,599 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/690829928: HTTP 403
+2025-06-12 15:00:18,849 - tools.scraper_tools - WARNING - Failed to scrape https://zh.wikipedia.org/wiki/扩散模型: HTTP 429
+2025-06-12 15:00:26,715 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868/answers/updated: HTTP 403
+2025-06-12 15:00:26,734 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/612534231: HTTP 403
+2025-06-12 15:00:26,735 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/1902792358002680968: HTTP 403
+2025-06-12 15:00:26,748 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/696669988: HTTP 403
+2025-06-12 15:00:26,842 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/11548033509: HTTP 403
+2025-06-12 15:00:32,437 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:00:32,470 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 15:00:32,476 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562226867: HTTP 403
+2025-06-12 15:00:32,481 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 15:00:36,715 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/590823641: HTTP 403
+2025-06-12 15:00:36,813 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/1911121420236363491: HTTP 403
+2025-06-12 15:00:40,739 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/21718676294: HTTP 403
+2025-06-12 15:00:40,742 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562226867: HTTP 403
+2025-06-12 15:00:40,744 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 15:00:40,745 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 15:00:41,144 - tools.scraper_tools - WARNING - Timeout scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf
+2025-06-12 15:00:43,125 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 15:00:45,996 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/680451972: HTTP 403
+2025-06-12 15:00:48,334 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 15:00:50,568 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 15:00:51,145 - tools.scraper_tools - WARNING - Timeout scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf
+2025-06-12 15:00:52,945 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:00:52,964 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/11548033509: HTTP 403
+2025-06-12 15:00:55,397 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 15:00:57,435 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf: 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 15:00:59,119 - tools.scraper_tools - WARNING - Failed to scrape https://www.zhihu.com/question/567829973: HTTP 403
+2025-06-12 15:00:59,120 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 15:00:59,350 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 15:01:01,759 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/1905640931077649985: HTTP 403
+2025-06-12 15:01:21,145 - tools.scraper_tools - WARNING - Timeout scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf

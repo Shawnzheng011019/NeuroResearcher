@@ -112,7 +112,8 @@ class PDFGeneratorTool(DocumentProcessorTool):
             # Add metadata if provided
             if metadata:
                 date = metadata.get('date', datetime.now().strftime("%Y-%m-%d"))
-                story.append(Paragraph(f"Generated on: {date}", self.styles['Normal']))
+                date_label = metadata.get('date_label', 'Generated on')
+                story.append(Paragraph(f"{date_label}: {date}", self.styles['Normal']))
                 story.append(Spacer(1, 20))
             
             # Process content by sections
@@ -165,7 +166,8 @@ class DocxGeneratorTool(DocumentProcessorTool):
             # Add metadata if provided
             if metadata:
                 date = metadata.get('date', datetime.now().strftime("%Y-%m-%d"))
-                doc.add_paragraph(f"Generated on: {date}")
+                date_label = metadata.get('date_label', 'Generated on')
+                doc.add_paragraph(f"{date_label}: {date}")
                 doc.add_paragraph("")  # Empty line
             
             # Process content by sections
@@ -205,23 +207,26 @@ class MarkdownGeneratorTool(DocumentProcessorTool):
         try:
             filename = self.generate_filename(title, "md")
             filepath = self.output_dir / filename
-            
+
             # Build markdown content
             markdown_content = []
-            
+
             # Add title
             markdown_content.append(f"# {title}\n")
-            
+
             # Add metadata if provided
             if metadata:
                 date = metadata.get('date', datetime.now().strftime("%Y-%m-%d"))
-                markdown_content.append(f"**Generated on:** {date}\n")
-                
+                date_label = metadata.get('date_label', 'Generated on')
+                sources_label = metadata.get('sources_label', 'Sources')
+
+                markdown_content.append(f"**{date_label}:** {date}\n")
+
                 if metadata.get('sources'):
-                    markdown_content.append("## Sources\n")
+                    markdown_content.append(f"## {sources_label}\n")
                     for i, source in enumerate(metadata['sources'], 1):
                         markdown_content.append(f"{i}. {source}\n")
-                
+
                 markdown_content.append("---\n")
             
             # Add main content
@@ -381,6 +386,20 @@ class DocumentPublisher:
         try:
             if not lang_config:
                 return content
+
+            # Check if content is already localized by looking for common localized patterns
+            # If content already contains localized titles, skip further localization
+            localized_patterns = [
+                self.language_manager.translate('introduction'),
+                self.language_manager.translate('conclusion'),
+                self.language_manager.translate('references')
+            ]
+
+            # If any localized pattern is found, assume content is already localized
+            for pattern in localized_patterns:
+                if pattern in content and pattern != pattern.replace("_", " ").title():
+                    logger.info("Content appears to be already localized, skipping basic localization")
+                    return content
 
             # Basic section title translation for common patterns
             common_sections = {

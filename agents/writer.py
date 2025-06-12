@@ -6,6 +6,7 @@ from datetime import datetime
 from tools.llm_tools import LLMManager
 from state import ResearchState
 from config import Config
+from localization.prompt_manager import MultilingualPromptManager, PromptType
 
 logger = logging.getLogger(__name__)
 
@@ -14,6 +15,9 @@ class WriterAgent:
     def __init__(self, config: Config, llm_manager: LLMManager):
         self.config = config
         self.llm_manager = llm_manager
+
+        # Initialize multilingual prompt manager
+        self.prompt_manager = MultilingualPromptManager()
         
     async def write_final_report(self, state: ResearchState) -> ResearchState:
         logger.info("Starting final report writing")
@@ -54,20 +58,29 @@ class WriterAgent:
     async def _generate_table_of_contents(self, state: ResearchState) -> str:
         title = state["title"]
         sections = state["sections"]
-        
+
+        # Get language code from task
+        language_code = state["task"].language if hasattr(state["task"], 'language') else "en"
+
+        # Get localized section titles
+        toc_title = self.prompt_manager.language_manager.translate("table_of_contents", language_code)
+        intro_title = self.prompt_manager.language_manager.translate("introduction", language_code)
+        conclusion_title = self.prompt_manager.language_manager.translate("conclusion", language_code)
+        references_title = self.prompt_manager.language_manager.translate("references", language_code)
+
         toc_lines = [
-            "# Table of Contents\n",
-            "1. Introduction",
+            f"# {toc_title}\n",
+            f"1. {intro_title}",
         ]
-        
+
         for i, section in enumerate(sections, 2):
             toc_lines.append(f"{i}. {section}")
-        
+
         toc_lines.extend([
-            f"{len(sections) + 2}. Conclusion",
-            f"{len(sections) + 3}. References"
+            f"{len(sections) + 2}. {conclusion_title}",
+            f"{len(sections) + 3}. {references_title}"
         ])
-        
+
         return "\n".join(toc_lines)
     
     async def _write_introduction(self, state: ResearchState) -> str:
@@ -75,29 +88,20 @@ class WriterAgent:
         title = state["title"]
         sections = state["sections"]
         initial_research = state["initial_research"]
-        
-        system_prompt = """You are an expert academic writer. Write a compelling and informative introduction 
-        for a research report that sets the context, explains the importance of the topic, and outlines 
-        what the report will cover."""
-        
-        user_prompt = f"""Research Topic: {title}
-Research Question: {query}
 
-Report Sections to be Covered:
-{chr(10).join(f'- {section}' for section in sections)}
+        # Get language code from task
+        language_code = state["task"].language if hasattr(state["task"], 'language') else "en"
 
-Background Research Summary:
-{initial_research[:1000]}...
+        # Get localized prompts
+        system_prompt, user_prompt = self.prompt_manager.format_prompt(
+            PromptType.INTRODUCTION_WRITING,
+            language_code=language_code,
+            title=title,
+            query=query,
+            sections="\n".join(f"- {section}" for section in sections),
+            initial_research=initial_research[:1000] + "..." if len(initial_research) > 1000 else initial_research
+        )
 
-Write a comprehensive introduction (300-500 words) that:
-1. Introduces the research topic and its significance
-2. Provides necessary background context
-3. Clearly states the research question or objective
-4. Outlines the structure and scope of the report
-5. Engages the reader and establishes the importance of the research
-
-The introduction should be professional, well-structured, and set appropriate expectations for the report."""
-        
         try:
             introduction = await self.llm_manager.generate_with_fallback(
                 prompt=user_prompt,
@@ -107,7 +111,9 @@ The introduction should be professional, well-structured, and set appropriate ex
             return introduction
         except Exception as e:
             logger.error(f"Failed to write introduction: {str(e)}")
-            return f"# Introduction\n\nThis report examines {query} through comprehensive research and analysis."
+            # Use localized fallback text
+            intro_title = self.prompt_manager.language_manager.translate("introduction", language_code)
+            return f"# {intro_title}\n\nThis report examines {query} through comprehensive research and analysis."
     
     async def _compile_main_content(self, state: ResearchState) -> str:
         research_data = state["research_data"]
@@ -130,30 +136,22 @@ The introduction should be professional, well-structured, and set appropriate ex
     async def _write_conclusion(self, state: ResearchState, main_content: str) -> str:
         query = state["task"].query
         title = state["title"]
-        
+
         # Prepare content summary for conclusion
         content_summary = main_content[:3000] if len(main_content) > 3000 else main_content
-        
-        system_prompt = """You are an expert academic writer. Write a comprehensive conclusion that synthesizes 
-        the research findings, draws meaningful insights, and provides a satisfying closure to the research report."""
-        
-        user_prompt = f"""Research Topic: {title}
-Research Question: {query}
 
-Main Research Content Summary:
-{content_summary}
+        # Get language code from task
+        language_code = state["task"].language if hasattr(state["task"], 'language') else "en"
 
-Write a comprehensive conclusion (400-600 words) that:
-1. Summarizes the key findings from the research
-2. Synthesizes insights across different aspects of the topic
-3. Addresses the original research question
-4. Discusses implications and significance of the findings
-5. Identifies any limitations or areas for future research
-6. Provides a strong, memorable closing
+        # Get localized prompts
+        system_prompt, user_prompt = self.prompt_manager.format_prompt(
+            PromptType.CONCLUSION_WRITING,
+            language_code=language_code,
+            title=title,
+            query=query,
+            content_summary=content_summary
+        )
 
-The conclusion should tie together all the research findings and provide clear answers or insights 
-related to the original research question."""
-        
         try:
             conclusion = await self.llm_manager.generate_with_fallback(
                 prompt=user_prompt,
@@ -163,7 +161,9 @@ related to the original research question."""
             return conclusion
         except Exception as e:
             logger.error(f"Failed to write conclusion: {str(e)}")
-            return f"# Conclusion\n\nThis research has provided insights into {query} through comprehensive analysis."
+            # Use localized fallback text
+            conclusion_title = self.prompt_manager.language_manager.translate("conclusion", language_code)
+            return f"# {conclusion_title}\n\nThis research has provided insights into {query} through comprehensive analysis."
     
     def _compile_sources(self, state: ResearchState) -> List[str]:
         sources = []
@@ -192,24 +192,44 @@ related to the original research question."""
         introduction = state["introduction"]
         conclusion = state["conclusion"]
         sources = state["sources"]
-        
+
+        # Get language code from task
+        language_code = state["task"].language if hasattr(state["task"], 'language') else "en"
+
+        # Get localized section titles
+        intro_title = self.prompt_manager.language_manager.translate("introduction", language_code)
+        conclusion_title = self.prompt_manager.language_manager.translate("conclusion", language_code)
+        references_title = self.prompt_manager.language_manager.translate("references", language_code)
+        date_label = self.prompt_manager.language_manager.translate("date", language_code)
+        query_label = self.prompt_manager.language_manager.translate("research_query", language_code)
+
+        # Format date according to language
+        lang_config = self.prompt_manager.language_manager.get_language(language_code)
+        formatted_date = date
+        if lang_config and hasattr(lang_config, 'date_format'):
+            try:
+                date_obj = datetime.strptime(date, "%Y-%m-%d")
+                formatted_date = date_obj.strftime(lang_config.date_format)
+            except:
+                formatted_date = date
+
         # Assemble the complete report
         report_parts = [
             f"# {title}\n",
-            f"**Date:** {date}\n",
-            f"**Research Query:** {state['task'].query}\n",
+            f"**{date_label}:** {formatted_date}\n",
+            f"**{query_label}:** {state['task'].query}\n",
             "---\n",
             table_of_contents,
             "\n---\n",
-            "# Introduction\n",
+            f"# {intro_title}\n",
             introduction,
             "\n---\n",
             main_content,
             "\n---\n",
-            "# Conclusion\n",
+            f"# {conclusion_title}\n",
             conclusion,
             "\n---\n",
-            "# References\n"
+            f"# {references_title}\n"
         ]
         
         # Add sources
@@ -219,11 +239,13 @@ related to the original research question."""
         else:
             report_parts.append("No sources available.")
         
-        # Add metadata
+        # Add metadata with localized labels
+        generated_on_label = self.prompt_manager.language_manager.translate("generated_on", language_code)
+
         report_parts.extend([
             "\n---\n",
-            "## Report Metadata\n",
-            f"- **Generated on:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+            f"## {self.prompt_manager.language_manager.translate('report_metadata', language_code)}\n",
+            f"- **{generated_on_label}:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
             f"- **Total sections:** {len(state['sections'])}",
             f"- **Total sources:** {len(sources)}",
             f"- **Research cost:** ${state['costs']:.4f}" if state['costs'] > 0 else "- **Research cost:** Not tracked"

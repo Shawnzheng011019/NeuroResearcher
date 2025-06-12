@@ -76,7 +76,9 @@ class LanguageManager:
                     "author": "Author",
                     "date": "Date",
                     "retrieved_from": "Retrieved from",
-                    "accessed_on": "Accessed on"
+                    "accessed_on": "Accessed on",
+                    "research_query": "Research Query",
+                    "report_metadata": "Report Metadata"
                 },
                 "section_titles": {
                     "abstract": "Abstract",
@@ -126,7 +128,9 @@ class LanguageManager:
                     "author": "作者",
                     "date": "日期",
                     "retrieved_from": "检索自",
-                    "accessed_on": "访问于"
+                    "accessed_on": "访问于",
+                    "research_query": "研究问题",
+                    "report_metadata": "报告元数据"
                 },
                 "section_titles": {
                     "abstract": "摘要",
@@ -176,7 +180,9 @@ class LanguageManager:
                     "author": "作者",
                     "date": "日期",
                     "retrieved_from": "檢索自",
-                    "accessed_on": "訪問於"
+                    "accessed_on": "訪問於",
+                    "research_query": "研究問題",
+                    "report_metadata": "報告元數據"
                 },
                 "section_titles": {
                     "abstract": "摘要",
@@ -226,7 +232,9 @@ class LanguageManager:
                     "author": "著者",
                     "date": "日付",
                     "retrieved_from": "取得元",
-                    "accessed_on": "アクセス日"
+                    "accessed_on": "アクセス日",
+                    "research_query": "研究課題",
+                    "report_metadata": "レポートメタデータ"
                 },
                 "section_titles": {
                     "abstract": "要約",
@@ -276,7 +284,9 @@ class LanguageManager:
                     "author": "저자",
                     "date": "날짜",
                     "retrieved_from": "검색 출처",
-                    "accessed_on": "접근일"
+                    "accessed_on": "접근일",
+                    "research_query": "연구 질문",
+                    "report_metadata": "보고서 메타데이터"
                 },
                 "section_titles": {
                     "abstract": "초록",

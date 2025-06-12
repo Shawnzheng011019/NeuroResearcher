@@ -9,6 +9,7 @@ from tools.llm_tools import LLMManager
 from tools.rag_retriever import RAGRetriever
 from state import ResearchState, SearchState
 from config import Config
+from localization.prompt_manager import MultilingualPromptManager, PromptType
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +23,9 @@ class ResearcherAgent:
         self.content_extractor = ContentExtractorTool()
         self.rag_retriever = None
         self.use_rag = config.retriever in ["local", "hybrid"]
+
+        # Initialize multilingual prompt manager
+        self.prompt_manager = MultilingualPromptManager()
 
         # Initialize RAG retriever if needed
         if self.use_rag:
@@ -74,25 +78,49 @@ class ResearcherAgent:
                 except Exception as e:
                     logger.warning(f"Local document search failed: {str(e)}")
 
-            # 2. Web search (always performed unless retriever is "local")
+            # 2. Web search with intelligent source diversification
             if self.config.retriever != "local":
-                search_results = await self.search_manager.search_with_fallback(query)
+                # Use diversified search to reduce dependency on single sources
+                search_results = await self.search_manager.search_with_diversification(
+                    query, max_per_domain=2
+                )
 
                 if search_results:
-                    # Extract URLs for scraping
+                    # Extract URLs for scraping with priority consideration
                     max_web_results = self.config.max_search_results_per_query
                     if self.use_rag:
                         max_web_results = max_web_results // 2  # Split between local and web
 
-                    urls = [result["url"] for result in search_results[:max_web_results]]
+                    # Select URLs based on priority and reliability
+                    prioritized_results = sorted(search_results,
+                                               key=lambda x: (x.get('domain_priority', 5), x.get('domain_reliability', 0.5)),
+                                               reverse=True)
+                    urls = [result["url"] for result in prioritized_results[:max_web_results]]
 
-                    # Scrape content from URLs
-                    scraped_data = await self.scraper.scrape_multiple(urls, max_concurrent=5)
+                    # Scrape content with intelligent retry and failure handling
+                    scraped_data = await self.scraper.scrape_multiple(
+                        urls, max_concurrent=3, min_success_rate=0.3
+                    )
 
-                    # Extract relevant content
-                    web_content = self.content_extractor.extract_relevant_content(scraped_data, query)
+                    # Extract relevant content with enhanced quality assessment
+                    web_content = self.content_extractor.extract_relevant_content(
+                        scraped_data, query, min_quality_score=0.2
+                    )
                     all_relevant_content.extend(web_content)
-                    logger.info(f"Found {len(web_content)} relevant web sources")
+
+                    # Log source diversity metrics
+                    successful_domains = set()
+                    for content in web_content:
+                        domain = content.get('domain', '')
+                        if domain:
+                            successful_domains.add(domain)
+
+                    logger.info(f"Found {len(web_content)} relevant web sources from {len(successful_domains)} different domains")
+
+                    # If we have very few sources, try alternative search strategies
+                    if len(web_content) < 2:
+                        logger.warning("Low content yield, attempting alternative search strategy")
+                        await self._try_alternative_search(query, all_relevant_content)
 
             # Check if we have any content
             if not all_relevant_content:
@@ -101,7 +129,8 @@ class ResearcherAgent:
                 return state
 
             # Generate initial research summary
-            initial_research = await self._generate_research_summary(query, all_relevant_content)
+            language_code = state["task"].language if hasattr(state["task"], 'language') else "en"
+            initial_research = await self._generate_research_summary(query, all_relevant_content, language_code)
 
             # Update state
             state["initial_research"] = initial_research
@@ -120,8 +149,11 @@ class ResearcherAgent:
         logger.info(f"Conducting deep research on topic: {topic}")
 
         try:
+            # Get language code from task
+            language_code = state["task"].language if hasattr(state["task"], 'language') else "en"
+
             # Generate specific queries for the topic
-            specific_queries = await self._generate_specific_queries(topic, state["task"].query)
+            specific_queries = await self._generate_specific_queries(topic, state["task"].query, language_code)
 
             all_research_data = []
 
@@ -140,14 +172,25 @@ class ResearcherAgent:
                     except Exception as e:
                         logger.warning(f"Local search failed for query '{query}': {str(e)}")
 
-                # 2. Web search (if not local-only)
+                # 2. Web search with intelligent source selection
                 if self.config.retriever != "local":
-                    search_results = await self.search_manager.search_with_fallback(query)
+                    search_results = await self.search_manager.search_with_diversification(
+                        query, max_per_domain=1  # More restrictive for deep research
+                    )
 
                     if search_results:
-                        urls = [result["url"] for result in search_results[:3]]  # Limit for deep research
-                        scraped_data = await self.scraper.scrape_multiple(urls, max_concurrent=3)
-                        web_content = self.content_extractor.extract_relevant_content(scraped_data, query)
+                        # Select highest quality sources for deep research
+                        top_results = sorted(search_results,
+                                           key=lambda x: (x.get('domain_priority', 5), x.get('domain_reliability', 0.5)),
+                                           reverse=True)[:3]
+                        urls = [result["url"] for result in top_results]
+
+                        scraped_data = await self.scraper.scrape_multiple(
+                            urls, max_concurrent=2, min_success_rate=0.5
+                        )
+                        web_content = self.content_extractor.extract_relevant_content(
+                            scraped_data, query, min_quality_score=0.4  # Higher quality threshold for deep research
+                        )
                         query_results.extend(web_content)
 
                 all_research_data.extend(query_results)
@@ -162,7 +205,7 @@ class ResearcherAgent:
                     unique_research_data.append(item)
             
             # Generate comprehensive research draft
-            research_draft = await self._generate_research_draft(topic, unique_research_data, state["task"].query)
+            research_draft = await self._generate_research_draft(topic, unique_research_data, state["task"].query, language_code)
             
             logger.info(f"Deep research completed for topic: {topic}. Found {len(unique_research_data)} unique sources")
             
@@ -182,31 +225,21 @@ class ResearcherAgent:
                 "source_count": 0
             }
     
-    async def _generate_research_summary(self, query: str, content_list: List[Dict[str, Any]]) -> str:
+    async def _generate_research_summary(self, query: str, content_list: List[Dict[str, Any]], language_code: Optional[str] = None) -> str:
         if not content_list:
             return "No relevant content found for the research query."
-        
+
         # Prepare content for summarization
         content_summary = self.content_extractor.summarize_content(content_list, max_summary_length=3000)
-        
-        system_prompt = """You are a research analyst tasked with creating a comprehensive summary of research findings.
-        Your goal is to synthesize information from multiple sources into a coherent, well-structured summary.
-        Focus on key insights, important facts, and relevant details that address the research query."""
-        
-        user_prompt = f"""Research Query: {query}
 
-Research Content from Multiple Sources:
-{content_summary}
+        # Get localized prompts
+        system_prompt, user_prompt = self.prompt_manager.format_prompt(
+            PromptType.RESEARCH_SUMMARY,
+            language_code=language_code,
+            query=query,
+            content_summary=content_summary
+        )
 
-Please create a comprehensive research summary that:
-1. Addresses the main research query
-2. Synthesizes key findings from the sources
-3. Identifies important patterns or themes
-4. Highlights any conflicting information
-5. Provides a balanced perspective
-
-Format the summary in clear, well-structured paragraphs."""
-        
         try:
             summary = await self.llm_manager.generate_with_fallback(
                 prompt=user_prompt,
@@ -218,67 +251,45 @@ Format the summary in clear, well-structured paragraphs."""
             logger.error(f"Failed to generate research summary: {str(e)}")
             return f"Failed to generate summary. Raw content available from {len(content_list)} sources."
     
-    async def _generate_specific_queries(self, topic: str, main_query: str) -> List[str]:
-        system_prompt = """You are a research query specialist. Generate specific, targeted search queries 
-        that will help gather comprehensive information about a given topic in the context of the main research question."""
-        
-        user_prompt = f"""Main Research Query: {main_query}
-Specific Topic: {topic}
+    async def _generate_specific_queries(self, topic: str, main_query: str, language_code: Optional[str] = None) -> List[str]:
+        # Get localized prompts
+        system_prompt, user_prompt = self.prompt_manager.format_prompt(
+            PromptType.RESEARCH_QUERY_GENERATION,
+            language_code=language_code,
+            main_query=main_query,
+            topic=topic
+        )
 
-Generate 3-5 specific search queries that would help gather detailed information about this topic 
-in relation to the main research question. Each query should be:
-1. Specific and focused
-2. Likely to return relevant results
-3. Different from the others to cover various aspects
-
-Return only the queries, one per line, without numbering or additional text."""
-        
         try:
             response = await self.llm_manager.generate_with_fallback(
                 prompt=user_prompt,
                 system_prompt=system_prompt,
                 tool_type="fast"
             )
-            
+
             queries = [q.strip() for q in response.split('\n') if q.strip()]
             return queries[:5]  # Limit to 5 queries
-            
+
         except Exception as e:
             logger.error(f"Failed to generate specific queries: {str(e)}")
             return [f"{topic} {main_query}"]  # Fallback query
     
-    async def _generate_research_draft(self, topic: str, research_data: List[Dict[str, Any]], main_query: str) -> str:
+    async def _generate_research_draft(self, topic: str, research_data: List[Dict[str, Any]], main_query: str, language_code: Optional[str] = None) -> str:
         if not research_data:
             return f"No research data available for topic: {topic}"
-        
+
         # Prepare research content
         content_summary = self.content_extractor.summarize_content(research_data, max_summary_length=4000)
-        
-        system_prompt = """You are an expert researcher and writer. Create a comprehensive, well-structured 
-        research section that thoroughly covers the given topic based on the provided research data.
-        
-        Your writing should be:
-        - Academically rigorous but accessible
-        - Well-organized with clear structure
-        - Factual and evidence-based
-        - Properly contextualized within the main research question"""
-        
-        user_prompt = f"""Main Research Question: {main_query}
-Section Topic: {topic}
 
-Research Data:
-{content_summary}
+        # Get localized prompts
+        system_prompt, user_prompt = self.prompt_manager.format_prompt(
+            PromptType.RESEARCH_DRAFT,
+            language_code=language_code,
+            main_query=main_query,
+            topic=topic,
+            content_summary=content_summary
+        )
 
-Write a comprehensive research section about "{topic}" that:
-1. Provides thorough coverage of the topic
-2. Integrates findings from multiple sources
-3. Maintains focus on how this topic relates to the main research question
-4. Uses clear, professional language
-5. Structures information logically with appropriate subheadings if needed
-6. Includes specific examples and evidence where relevant
-
-The section should be substantial (800-1200 words) and serve as a complete treatment of this aspect of the research."""
-        
         try:
             draft = await self.llm_manager.generate_with_fallback(
                 prompt=user_prompt,
@@ -289,3 +300,100 @@ The section should be substantial (800-1200 words) and serve as a complete treat
         except Exception as e:
             logger.error(f"Failed to generate research draft for topic {topic}: {str(e)}")
             return f"Failed to generate research draft for topic: {topic}. Error: {str(e)}"
+
+    async def _try_alternative_search(self, original_query: str, existing_content: List[Dict[str, Any]]):
+        """Try alternative search strategies when initial search yields poor results"""
+
+        alternative_strategies = [
+            # Try English translation of Chinese queries
+            self._translate_query_to_english(original_query),
+            # Try broader terms
+            self._broaden_search_terms(original_query),
+            # Try more specific academic terms
+            self._add_academic_terms(original_query)
+        ]
+
+        for strategy_query in alternative_strategies:
+            if strategy_query and strategy_query != original_query:
+                logger.info(f"Trying alternative search strategy: '{strategy_query}'")
+
+                try:
+                    # Use fallback search with different strategy
+                    search_results = await self.search_manager.search_with_fallback(strategy_query)
+
+                    if search_results:
+                        # Focus on reliable sources only
+                        reliable_results = [r for r in search_results
+                                          if r.get('domain_reliability', 0) > 0.7]
+
+                        if reliable_results:
+                            urls = [result["url"] for result in reliable_results[:3]]
+                            scraped_data = await self.scraper.scrape_multiple(
+                                urls, max_concurrent=2, min_success_rate=0.5
+                            )
+
+                            alternative_content = self.content_extractor.extract_relevant_content(
+                                scraped_data, original_query, min_quality_score=0.3
+                            )
+
+                            if alternative_content:
+                                existing_content.extend(alternative_content)
+                                logger.info(f"Alternative search found {len(alternative_content)} additional sources")
+                                break  # Stop after first successful alternative
+
+                except Exception as e:
+                    logger.warning(f"Alternative search strategy failed: {str(e)}")
+                    continue
+
+    def _translate_query_to_english(self, query: str) -> Optional[str]:
+        """Simple heuristic to create English version of Chinese queries"""
+        chinese_to_english_terms = {
+            '扩散模型': 'diffusion model',
+            '人工智能': 'artificial intelligence',
+            '深度学习': 'deep learning',
+            '机器学习': 'machine learning',
+            '神经网络': 'neural network',
+            '自然语言处理': 'natural language processing',
+            '计算机视觉': 'computer vision',
+            '算法': 'algorithm',
+            '训练': 'training',
+            '架构': 'architecture',
+            '方法': 'method',
+            '应用': 'application',
+            '效果': 'performance',
+            '任务': 'task'
+        }
+
+        english_query = query
+        for chinese, english in chinese_to_english_terms.items():
+            english_query = english_query.replace(chinese, english)
+
+        return english_query if english_query != query else None
+
+    def _broaden_search_terms(self, query: str) -> str:
+        """Create broader search terms"""
+        broad_terms = {
+            'diffusion model': 'generative model',
+            'specific algorithm': 'machine learning',
+            'particular method': 'approach'
+        }
+
+        broader_query = query
+        for specific, broad in broad_terms.items():
+            if specific in query.lower():
+                broader_query = query.replace(specific, broad)
+                break
+
+        return broader_query
+
+    def _add_academic_terms(self, query: str) -> str:
+        """Add academic search terms to improve results"""
+        academic_terms = ['research', 'paper', 'study', 'analysis']
+
+        # Add academic terms if not already present
+        query_lower = query.lower()
+        for term in academic_terms:
+            if term not in query_lower:
+                return f"{query} {term}"
+
+        return query

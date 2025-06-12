@@ -159,7 +159,7 @@ class TaskConfig(BaseModel):
 
     # Template and localization settings
     template_name: str = "none"  # "none" means no template, let LLM generate freely
-    language: str = "en"
+    language: str = "en"  # Default to English to match command line default
     custom_template_path: Optional[str] = None
     citation_style: str = "apa"
 

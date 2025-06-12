@@ -34,7 +34,7 @@ async def quick_research_demo():
         
         # Create a simple research task
         task_config = get_task_config(
-            query="What are the key benefits and challenges of renewable energy?",
+            query="AI はさまざまな業界にどのような利便性をもたらしたのか？",
             max_sections=3,
             publish_formats={"markdown": True},
             model="gpt-4o-mini",
