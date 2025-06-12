@@ -64,6 +64,8 @@ class Config(BaseSettings):
     serpapi_api_key: Optional[str] = Field(default=None, alias="SERPAPI_API_KEY")
     # Research Configuration
     max_search_results_per_query: int = Field(default=8, alias="MAX_SEARCH_RESULTS_PER_QUERY")
+    min_sources_per_topic: int = Field(default=2, alias="MIN_SOURCES_PER_TOPIC")
+    max_search_retries: int = Field(default=3, alias="MAX_SEARCH_RETRIES")
     max_iterations: int = Field(default=3, alias="MAX_ITERATIONS")
     agent_role: Optional[str] = Field(default=None, alias="AGENT_ROLE")
 

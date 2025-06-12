@@ -71,8 +71,8 @@ class MultilingualPromptManager:
                 "user_template": "Main Research Query: {main_query}\nSpecific Topic: {topic}\n\nGenerate 3-5 specific search queries that would help gather detailed information about this topic in relation to the main research question. Each query should be:\n1. Specific and focused\n2. Likely to return relevant results\n3. Different from the others to cover various aspects\n\nReturn only the queries, one per line, without numbering or additional text."
             },
             PromptType.RESEARCH_DRAFT: {
-                "system": "You are an expert researcher and writer. Create a comprehensive, well-structured research section that thoroughly covers the given topic based on the provided research data. Your writing should be:\n- Academically rigorous but accessible\n- Well-organized with clear structure\n- Factual and evidence-based\n- Properly contextualized within the main research question",
-                "user_template": "Main Research Question: {main_query}\nSection Topic: {topic}\n\nResearch Data:\n{content_summary}\n\nWrite a comprehensive research section that:\n1. Thoroughly covers the topic\n2. Integrates findings from multiple sources\n3. Maintains academic rigor\n4. Provides clear analysis and insights\n5. Connects to the main research question\n\nStructure the content with clear headings and logical flow."
+                "system": "You are an expert researcher and writer. Create a focused research section that covers the given topic as part of a larger research report. This is a SECTION of the report, not a complete standalone document. Your writing should be:\n- Academically rigorous but accessible\n- Well-organized with clear structure\n- Factual and evidence-based\n- Focused on the specific topic without redundant introductions or conclusions\n- Properly contextualized within the main research question",
+                "user_template": "Main Research Question: {main_query}\nSection Topic: {topic}\n\nResearch Data:\n{content_summary}\n\nWrite a focused research section that:\n1. Directly addresses the specific topic without general introductions\n2. Integrates findings from multiple sources\n3. Maintains academic rigor\n4. Provides clear analysis and insights specific to this topic\n5. Connects findings to the main research question\n6. Avoids redundant basic concepts or general conclusions\n\nIMPORTANT: This is a section of a larger report. Do NOT include:\n- General introductions about the field\n- Basic concept explanations that belong in an overview\n- Standalone conclusions (the report will have its own conclusion)\n\nStructure the content with clear subheadings and logical flow focused on the specific topic."
             },
             PromptType.INTRODUCTION_WRITING: {
                 "system": "You are an expert academic writer. Write a compelling and informative introduction for a research report that sets the context, explains the importance of the topic, and outlines what the report will cover.",
@@ -119,8 +119,8 @@ class MultilingualPromptManager:
                 "user_template": "主要研究查询：{main_query}\n具体主题：{topic}\n\n生成3-5个具体的搜索查询，这些查询将有助于收集与主要研究问题相关的该主题的详细信息。每个查询应该：\n1. 具体且有针对性\n2. 可能返回相关结果\n3. 与其他查询不同以涵盖各个方面\n\n只返回查询，每行一个，不要编号或额外文本。"
             },
             PromptType.RESEARCH_DRAFT: {
-                "system": "你是一名专业研究员和作家。基于提供的研究数据，创建一个全面、结构良好的研究部分，彻底涵盖给定主题。你的写作应该：\n- 学术严谨但易于理解\n- 组织良好，结构清晰\n- 基于事实和证据\n- 在主要研究问题的背景下适当定位",
-                "user_template": "主要研究问题：{main_query}\n部分主题：{topic}\n\n研究数据：\n{content_summary}\n\n写一个全面的研究部分，包括：\n1. 彻底涵盖主题\n2. 整合来自多个来源的发现\n3. 保持学术严谨性\n4. 提供清晰的分析和见解\n5. 与主要研究问题相关联\n\n用清晰的标题和逻辑流程构建内容。"
+                "system": "你是一名专业研究员和作家。创建一个专注的研究章节，作为更大研究报告的一部分来涵盖给定主题。这是报告的一个章节，不是完整的独立文档。你的写作应该：\n- 学术严谨但易于理解\n- 组织良好，结构清晰\n- 基于事实和证据\n- 专注于特定主题，避免冗余的引言或结论\n- 在主要研究问题的背景下适当定位",
+                "user_template": "主要研究问题：{main_query}\n部分主题：{topic}\n\n研究数据：\n{content_summary}\n\n写一个专注的研究章节，包括：\n1. 直接针对特定主题，不需要一般性引言\n2. 整合来自多个来源的发现\n3. 保持学术严谨性\n4. 提供针对此主题的清晰分析和见解\n5. 将发现与主要研究问题相关联\n6. 避免冗余的基本概念或一般性结论\n\n重要提示：这是更大报告的一个章节。请勿包含：\n- 关于该领域的一般性引言\n- 属于概述部分的基本概念解释\n- 独立的结论（报告将有自己的结论）\n\n用清晰的子标题和专注于特定主题的逻辑流程构建内容。"
             },
             PromptType.INTRODUCTION_WRITING: {
                 "system": "你是一名专业学术作家。为研究报告写一个引人入胜且信息丰富的引言，设定背景，解释主题的重要性，并概述报告将涵盖的内容。",
@@ -167,8 +167,8 @@ class MultilingualPromptManager:
                 "user_template": "主要研究查詢：{main_query}\n具體主題：{topic}\n\n生成3-5個具體的搜索查詢，這些查詢將有助於收集與主要研究問題相關的該主題的詳細信息。每個查詢應該：\n1. 具體且有針對性\n2. 可能返回相關結果\n3. 與其他查詢不同以涵蓋各個方面\n\n只返回查詢，每行一個，不要編號或額外文本。"
             },
             PromptType.RESEARCH_DRAFT: {
-                "system": "你是一名專業研究員和作家。基於提供的研究數據，創建一個全面、結構良好的研究部分，徹底涵蓋給定主題。你的寫作應該：\n- 學術嚴謹但易於理解\n- 組織良好，結構清晰\n- 基於事實和證據\n- 在主要研究問題的背景下適當定位",
-                "user_template": "主要研究問題：{main_query}\n部分主題：{topic}\n\n研究數據：\n{content_summary}\n\n寫一個全面的研究部分，包括：\n1. 徹底涵蓋主題\n2. 整合來自多個來源的發現\n3. 保持學術嚴謹性\n4. 提供清晰的分析和見解\n5. 與主要研究問題相關聯\n\n用清晰的標題和邏輯流程構建內容。"
+                "system": "你是一名專業研究員和作家。創建一個專注的研究章節，作為更大研究報告的一部分來涵蓋給定主題。這是報告的一個章節，不是完整的獨立文檔。你的寫作應該：\n- 學術嚴謹但易於理解\n- 組織良好，結構清晰\n- 基於事實和證據\n- 專注於特定主題，避免冗餘的引言或結論\n- 在主要研究問題的背景下適當定位",
+                "user_template": "主要研究問題：{main_query}\n部分主題：{topic}\n\n研究數據：\n{content_summary}\n\n寫一個專注的研究章節，包括：\n1. 直接針對特定主題，不需要一般性引言\n2. 整合來自多個來源的發現\n3. 保持學術嚴謹性\n4. 提供針對此主題的清晰分析和見解\n5. 將發現與主要研究問題相關聯\n6. 避免冗餘的基本概念或一般性結論\n\n重要提示：這是更大報告的一個章節。請勿包含：\n- 關於該領域的一般性引言\n- 屬於概述部分的基本概念解釋\n- 獨立的結論（報告將有自己的結論）\n\n用清晰的子標題和專注於特定主題的邏輯流程構建內容。"
             },
             PromptType.INTRODUCTION_WRITING: {
                 "system": "你是一名專業學術作家。為研究報告寫一個引人入勝且信息豐富的引言，設定背景，解釋主題的重要性，並概述報告將涵蓋的內容。",
@@ -199,8 +199,8 @@ class MultilingualPromptManager:
                 "user_template": "主要な研究クエリ：{main_query}\n具体的なトピック：{topic}\n\n主要な研究質問に関連してこのトピックの詳細情報を収集するのに役立つ3-5の具体的な検索クエリを生成してください。各クエリは以下であるべきです：\n1. 具体的で焦点を絞った\n2. 関連する結果を返す可能性が高い\n3. 様々な側面をカバーするために他のものと異なる\n\nクエリのみを返し、1行に1つ、番号付けや追加テキストなしで。"
             },
             PromptType.RESEARCH_DRAFT: {
-                "system": "あなたは専門の研究者兼作家です。提供された研究データに基づいて、与えられたトピックを徹底的にカバーする包括的で構造化された研究セクションを作成してください。あなたの執筆は以下であるべきです：\n- 学術的に厳密だが理解しやすい\n- よく組織され、明確な構造を持つ\n- 事実と証拠に基づく\n- 主要な研究質問の文脈で適切に位置づけられる",
-                "user_template": "主要な研究質問：{main_query}\nセクションのトピック：{topic}\n\n研究データ：\n{content_summary}\n\n以下を含む包括的な研究セクションを書いてください：\n1. トピックを徹底的にカバーする\n2. 複数のソースからの発見を統合する\n3. 学術的厳密性を維持する\n4. 明確な分析と洞察を提供する\n5. 主要な研究質問に関連付ける\n\n明確な見出しと論理的な流れでコンテンツを構成してください。"
+                "system": "あなたは専門の研究者兼作家です。より大きな研究報告書の一部として、与えられたトピックをカバーする焦点を絞った研究セクションを作成してください。これは報告書の一つのセクションであり、完全な独立した文書ではありません。あなたの執筆は以下であるべきです：\n- 学術的に厳密だが理解しやすい\n- よく組織され、明確な構造を持つ\n- 事実と証拠に基づく\n- 特定のトピックに焦点を当て、冗長な導入や結論を避ける\n- 主要な研究質問の文脈で適切に位置づけられる",
+                "user_template": "主要な研究質問：{main_query}\nセクションのトピック：{topic}\n\n研究データ：\n{content_summary}\n\n以下を含む焦点を絞った研究セクションを書いてください：\n1. 一般的な導入なしに特定のトピックに直接取り組む\n2. 複数のソースからの発見を統合する\n3. 学術的厳密性を維持する\n4. このトピックに特化した明確な分析と洞察を提供する\n5. 発見を主要な研究質問に関連付ける\n6. 冗長な基本概念や一般的な結論を避ける\n\n重要：これはより大きな報告書のセクションです。以下を含めないでください：\n- その分野に関する一般的な導入\n- 概要部分に属する基本概念の説明\n- 独立した結論（報告書には独自の結論があります）\n\n特定のトピックに焦点を当てた明確な小見出しと論理的な流れでコンテンツを構成してください。"
             },
             PromptType.INTRODUCTION_WRITING: {
                 "system": "あなたは専門の学術作家です。文脈を設定し、トピックの重要性を説明し、レポートがカバーする内容を概説する、研究レポートの魅力的で情報豊富な序論を書いてください。",
@@ -231,8 +231,8 @@ class MultilingualPromptManager:
                 "user_template": "주요 연구 쿼리: {main_query}\n구체적인 주제: {topic}\n\n주요 연구 질문과 관련하여 이 주제의 상세한 정보를 수집하는 데 도움이 될 3-5개의 구체적인 검색 쿼리를 생성하세요. 각 쿼리는 다음과 같아야 합니다:\n1. 구체적이고 집중된\n2. 관련 결과를 반환할 가능성이 높은\n3. 다양한 측면을 다루기 위해 다른 것들과 다른\n\n쿼리만 반환하고, 한 줄에 하나씩, 번호나 추가 텍스트 없이."
             },
             PromptType.RESEARCH_DRAFT: {
-                "system": "당신은 전문 연구자이자 작가입니다. 제공된 연구 데이터를 바탕으로 주어진 주제를 철저히 다루는 포괄적이고 잘 구조화된 연구 섹션을 작성하세요. 당신의 글쓰기는 다음과 같아야 합니다:\n- 학술적으로 엄격하지만 접근 가능한\n- 잘 조직되고 명확한 구조를 가진\n- 사실과 증거에 기반한\n- 주요 연구 질문의 맥락에서 적절히 위치한",
-                "user_template": "주요 연구 질문: {main_query}\n섹션 주제: {topic}\n\n연구 데이터:\n{content_summary}\n\n다음을 포함하는 포괄적인 연구 섹션을 작성하세요:\n1. 주제를 철저히 다루기\n2. 여러 출처의 발견을 통합하기\n3. 학술적 엄격성 유지하기\n4. 명확한 분석과 통찰 제공하기\n5. 주요 연구 질문과 연결하기\n\n명확한 제목과 논리적 흐름으로 내용을 구성하세요."
+                "system": "당신은 전문 연구자이자 작가입니다. 더 큰 연구 보고서의 일부로서 주어진 주제를 다루는 집중된 연구 섹션을 작성하세요. 이것은 보고서의 한 섹션이며, 완전한 독립 문서가 아닙니다. 당신의 글쓰기는 다음과 같아야 합니다:\n- 학술적으로 엄격하지만 접근 가능한\n- 잘 조직되고 명확한 구조를 가진\n- 사실과 증거에 기반한\n- 특정 주제에 집중하며 중복적인 서론이나 결론을 피하는\n- 주요 연구 질문의 맥락에서 적절히 위치한",
+                "user_template": "주요 연구 질문: {main_query}\n섹션 주제: {topic}\n\n연구 데이터:\n{content_summary}\n\n다음을 포함하는 집중된 연구 섹션을 작성하세요:\n1. 일반적인 서론 없이 특정 주제에 직접 접근하기\n2. 여러 출처의 발견을 통합하기\n3. 학술적 엄격성 유지하기\n4. 이 주제에 특화된 명확한 분석과 통찰 제공하기\n5. 발견을 주요 연구 질문과 연결하기\n6. 중복적인 기본 개념이나 일반적인 결론 피하기\n\n중요: 이것은 더 큰 보고서의 섹션입니다. 다음을 포함하지 마세요:\n- 해당 분야에 대한 일반적인 서론\n- 개요 부분에 속하는 기본 개념 설명\n- 독립적인 결론 (보고서에는 자체 결론이 있습니다)\n\n특정 주제에 집중된 명확한 소제목과 논리적 흐름으로 내용을 구성하세요."
             },
             PromptType.INTRODUCTION_WRITING: {
                 "system": "당신은 전문 학술 작가입니다. 맥락을 설정하고, 주제의 중요성을 설명하며, 보고서가 다룰 내용을 개요하는 연구 보고서의 매력적이고 정보가 풍부한 서론을 작성하세요.",

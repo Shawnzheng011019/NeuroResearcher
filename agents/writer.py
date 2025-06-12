@@ -4,6 +4,7 @@ import logging
 from datetime import datetime
 
 from tools.llm_tools import LLMManager
+from tools.document_tools import ContentDeduplicator
 from state import ResearchState
 from config import Config
 from localization.prompt_manager import MultilingualPromptManager, PromptType
@@ -18,6 +19,9 @@ class WriterAgent:
 
         # Initialize multilingual prompt manager
         self.prompt_manager = MultilingualPromptManager()
+
+        # Initialize content deduplicator
+        self.deduplicator = ContentDeduplicator()
         
     async def write_final_report(self, state: ResearchState) -> ResearchState:
         logger.info("Starting final report writing")
@@ -117,22 +121,78 @@ class WriterAgent:
     
     async def _compile_main_content(self, state: ResearchState) -> str:
         research_data = state["research_data"]
-        
+
         if not research_data:
             return "No research content available."
-        
+
         content_sections = []
-        
+
         for data in research_data:
             topic = data.get("topic", "Unknown Topic")
             content = data.get("content", "No content available")
-            
+
+            # Clean and process content to remove redundant sections
+            cleaned_content = await self._clean_section_content(content, topic, state)
+
             # Format as a main section
-            section_content = f"## {topic}\n\n{content}\n"
+            section_content = f"## {topic}\n\n{cleaned_content}\n"
             content_sections.append(section_content)
-        
+
         return "\n".join(content_sections)
-    
+
+    async def _clean_section_content(self, content: str, topic: str, state: ResearchState) -> str:
+        """Clean section content to remove redundant introductions, basic concepts, and conclusions"""
+        if not content or len(content.strip()) < 100:
+            return content
+
+        # Get language code from task
+        language_code = state["task"].language if hasattr(state["task"], 'language') else "en"
+
+        # Create system prompt for content cleaning
+        system_prompt = """You are an expert content editor. Your task is to clean and refine a research section by removing redundant content that doesn't belong in a focused section of a larger report.
+
+Remove or minimize:
+1. General introductions about the field or topic
+2. Basic concept explanations that belong in an overview section
+3. Standalone conclusions (the report will have its own conclusion)
+4. Repetitive background information
+5. Generic statements that don't add specific value
+
+Keep and enhance:
+1. Specific findings and analysis related to the topic
+2. Evidence-based insights
+3. Detailed technical information
+4. Comparative analysis
+5. Topic-specific applications and examples
+
+The result should be a focused, substantive section that directly addresses the specific topic without redundant content."""
+
+        user_prompt = f"""Topic: {topic}
+Main Research Question: {state["task"].query}
+
+Original Content:
+{content}
+
+Please clean and refine this content to create a focused section that:
+1. Removes redundant introductions, basic concepts, and standalone conclusions
+2. Keeps specific findings, analysis, and insights related to the topic
+3. Maintains academic rigor while being concise
+4. Focuses on the specific topic without general background
+
+Return the cleaned content that directly addresses the topic without redundant elements."""
+
+        try:
+            cleaned_content = await self.llm_manager.generate_with_fallback(
+                prompt=user_prompt,
+                system_prompt=system_prompt,
+                tool_type="smart"
+            )
+            return cleaned_content
+        except Exception as e:
+            logger.error(f"Failed to clean section content for topic {topic}: {str(e)}")
+            # Return original content if cleaning fails
+            return content
+
     async def _write_conclusion(self, state: ResearchState, main_content: str) -> str:
         query = state["task"].query
         title = state["title"]
@@ -252,10 +312,13 @@ class WriterAgent:
         ])
         
         final_report = "\n".join(report_parts)
-        
+
+        # Remove duplicate headings and sections
+        final_report = self.deduplicator.clean_content(final_report)
+
         # Enhance report formatting if needed
         enhanced_report = await self._enhance_report_formatting(final_report, state)
-        
+
         return enhanced_report
     
     async def _enhance_report_formatting(self, report: str, state: ResearchState) -> str:
@@ -288,6 +351,8 @@ Return the complete reformatted report."""
                 system_prompt=system_prompt,
                 tool_type="smart"
             )
+            # Apply deduplication after formatting enhancement
+            enhanced_report = self.deduplicator.clean_content(enhanced_report)
             return enhanced_report
         except Exception as e:
             logger.error(f"Failed to enhance report formatting: {str(e)}")

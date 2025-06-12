@@ -565,3 +565,296 @@ Caused by:
 2025-06-12 15:00:59,350 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/573627573: HTTP 403
 2025-06-12 15:01:01,759 - tools.scraper_tools - WARNING - Failed to scrape https://zhuanlan.zhihu.com/p/1905640931077649985: HTTP 403
 2025-06-12 15:01:21,145 - tools.scraper_tools - WARNING - Timeout scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf
+2025-06-12 15:26:36,985 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:26:38,068 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/648612421: HTTP 403
+2025-06-12 15:26:38,099 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/671240530: HTTP 403
+2025-06-12 15:26:45,473 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/648612421: HTTP 403
+2025-06-12 15:26:45,909 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:26:47,376 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/671240530: HTTP 403
+2025-06-12 15:26:55,240 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/648612421: HTTP 403
+2025-06-12 15:26:57,018 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:26:59,224 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/671240530: HTTP 403
+2025-06-12 15:26:59,225 - agents.researcher - WARNING - Low content yield, attempting alternative search strategy
+2025-06-12 15:27:30,244 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:30,901 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:31,194 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:31,471 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:31,663 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:32,552 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:33,237 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:34,064 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:34,102 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:34,437 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:36,847 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:36,847 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:27:38,957 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:38,960 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:27:40,939 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:40,940 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:27:43,211 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:43,214 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:27:44,861 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:27:44,862 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:27:44,863 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:27:44,863 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:27:50,611 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 15:27:51,582 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:27:53,516 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:27:53,517 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:27:58,759 - tools.scraper_tools - ERROR - Error scraping https://www.ebiotrade.com/newsf/2025-6/20250612053951342.htm (attempt 1): 'utf-8' codec can't decode byte 0xb0 in position 148: invalid start byte
+2025-06-12 15:27:58,940 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:28:00,702 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:28:02,647 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 15:28:02,752 - tools.scraper_tools - ERROR - Error scraping https://www.ebiotrade.com/newsf/2025-6/20250612053951342.htm (attempt 2): 'utf-8' codec can't decode byte 0xb0 in position 148: invalid start byte
+2025-06-12 15:28:03,472 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:28:05,727 - tools.scraper_tools - ERROR - Error scraping https://www.ebiotrade.com/newsf/2025-6/20250612053951342.htm (attempt 3): 'utf-8' codec can't decode byte 0xb0 in position 148: invalid start byte
+2025-06-12 15:28:05,728 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:28:07,378 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:28:14,042 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 15:28:14,046 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:28:17,461 - tools.scraper_tools - WARNING - Failed to scrape https://chandlerye.github.io/2023/08/31/paper_医学影像中的扩散模型+综合综述/: HTTP 404
+2025-06-12 15:28:21,143 - tools.scraper_tools - WARNING - Timeout scraping https://www.htu.edu.cn/_upload/article/files/21/8b/d9b2021a46f6a72175e3072768a1/d4ed9e54-6be9-4328-8208-972ab8fb70b3.pdf (attempt 1)
+2025-06-12 15:28:21,638 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 1): 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 15:28:34,921 - tools.scraper_tools - ERROR - Error scraping https://www.htu.edu.cn/_upload/article/files/21/8b/d9b2021a46f6a72175e3072768a1/d4ed9e54-6be9-4328-8208-972ab8fb70b3.pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:28:38,142 - tools.scraper_tools - WARNING - Timeout scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 1)
+2025-06-12 15:28:45,524 - tools.scraper_tools - ERROR - Error scraping https://www.htu.edu.cn/_upload/article/files/21/8b/d9b2021a46f6a72175e3072768a1/d4ed9e54-6be9-4328-8208-972ab8fb70b3.pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:28:45,527 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:28:46,934 - tools.scraper_tools - WARNING - Timeout scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 1)
+2025-06-12 15:28:46,936 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 2): 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 15:28:47,945 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:28:54,538 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:29:10,143 - tools.scraper_tools - WARNING - Timeout scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 2)
+2025-06-12 15:29:13,450 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 3): 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 15:29:13,452 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:29:18,828 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 2): 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 15:29:30,052 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 3): 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 15:29:30,055 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:29:38,315 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 3): 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 15:29:38,317 - tools.scraper_tools - WARNING - Low overall success rate. Consider using alternative content sources.
+2025-06-12 15:29:38,318 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:29:40,700 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:29:43,559 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:43:59,400 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:43:59,761 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/49327460796: HTTP 403
+2025-06-12 15:44:06,211 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:44:11,301 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/49327460796: HTTP 403
+2025-06-12 15:44:15,674 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:44:23,237 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/49327460796: HTTP 403
+2025-06-12 15:44:23,240 - agents.researcher - WARNING - Low content yield, attempting alternative search strategy
+2025-06-12 15:44:50,519 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zeeklog.com/kuo-san-mo-xing-diffusion-model-yuan-li-ji-dai-ma-shi-xian-2/: HTTP 403
+2025-06-12 15:44:50,768 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/612534231: HTTP 403
+2025-06-12 15:44:50,795 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:44:50,867 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:44:50,903 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/671240530: HTTP 403
+2025-06-12 15:44:51,059 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/638214796: HTTP 403
+2025-06-12 15:44:51,238 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/267696723: HTTP 403
+2025-06-12 15:44:51,785 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/536264596: HTTP 403
+2025-06-12 15:44:51,979 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 15:44:53,665 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:44:54,071 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:44:56,799 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:44:57,980 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:44:58,312 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/638214796: HTTP 403
+2025-06-12 15:44:59,277 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/267696723: HTTP 403
+2025-06-12 15:44:59,757 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/536264596: HTTP 403
+2025-06-12 15:45:00,330 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/612534231: HTTP 403
+2025-06-12 15:45:00,425 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zeeklog.com/kuo-san-mo-xing-diffusion-model-yuan-li-ji-dai-ma-shi-xian-2/: HTTP 403
+2025-06-12 15:45:00,509 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 15:45:03,222 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/671240530: HTTP 403
+2025-06-12 15:45:09,274 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/536264596: HTTP 403
+2025-06-12 15:45:10,038 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/267696723: HTTP 403
+2025-06-12 15:45:11,343 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/624221952: HTTP 403
+2025-06-12 15:45:11,610 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/638214796: HTTP 403
+2025-06-12 15:45:11,611 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:13,714 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zeeklog.com/kuo-san-mo-xing-diffusion-model-yuan-li-ji-dai-ma-shi-xian-2/: HTTP 403
+2025-06-12 15:45:13,716 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:15,679 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/612534231: HTTP 403
+2025-06-12 15:45:15,695 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868/answers/updated: HTTP 403
+2025-06-12 15:45:15,696 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:17,671 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:45:17,672 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/671240530: HTTP 403
+2025-06-12 15:45:17,673 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:20,059 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:45:20,564 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:22,350 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:24,280 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868/answers/updated: HTTP 403
+2025-06-12 15:45:24,420 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:45:24,941 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:26,968 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:45:27,022 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:45:27,099 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:29,541 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:45:29,683 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:31,759 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:45:32,862 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:45:34,627 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:34,627 - agents.researcher - WARNING - Only found 0 sources for topic '多任务强化学习中的扩散模型潜力', need at least 2. Attempting enhanced search (retry 1/3)
+2025-06-12 15:45:36,870 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868/answers/updated: HTTP 403
+2025-06-12 15:45:36,975 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:45:36,976 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:38,958 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:45:38,961 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:40,844 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:45:40,978 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:45:41,585 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:43,273 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:45,766 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:48,736 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:50,570 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:50,570 - agents.researcher - WARNING - Only found 0 sources for topic '扩散模型概述与原理', need at least 2. Attempting enhanced search (retry 1/3)
+2025-06-12 15:45:52,590 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:45:53,134 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:45:53,136 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:56,078 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:45:56,078 - agents.researcher - WARNING - Only found 0 sources for topic '扩散模型在自然语言处理中的优势', need at least 2. Attempting enhanced search (retry 1/3)
+2025-06-12 15:46:02,622 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868: HTTP 403
+2025-06-12 15:46:05,505 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:46:15,588 - tools.scraper_tools - ERROR - Error scraping https://www.htu.edu.cn/_upload/article/files/21/8b/d9b2021a46f6a72175e3072768a1/d4ed9e54-6be9-4328-8208-972ab8fb70b3.pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:46:18,998 - tools.scraper_tools - ERROR - Error scraping https://www.htu.edu.cn/_upload/article/files/21/8b/d9b2021a46f6a72175e3072768a1/d4ed9e54-6be9-4328-8208-972ab8fb70b3.pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:46:24,249 - tools.scraper_tools - ERROR - Error scraping https://www.htu.edu.cn/_upload/article/files/21/8b/d9b2021a46f6a72175e3072768a1/d4ed9e54-6be9-4328-8208-972ab8fb70b3.pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 15:46:24,251 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 15:46:24,251 - agents.researcher - WARNING - Only found 0 sources for topic '扩散模型在图像生成中的应用', need at least 2. Attempting enhanced search (retry 1/3)
+2025-06-12 15:46:57,138 - tools.scraper_tools - WARNING - Timeout scraping https://journal.cuc.edu.cn/mediaCCUploadFiles/20240828081136cd5ef0fe62784570a0326cd0b3219b2a.pdf (attempt 1)
+2025-06-12 15:47:29,138 - tools.scraper_tools - WARNING - Timeout scraping https://journal.cuc.edu.cn/mediaCCUploadFiles/20240828081136cd5ef0fe62784570a0326cd0b3219b2a.pdf (attempt 2)
+2025-06-12 15:48:02,138 - tools.scraper_tools - WARNING - Timeout scraping https://journal.cuc.edu.cn/mediaCCUploadFiles/20240828081136cd5ef0fe62784570a0326cd0b3219b2a.pdf (attempt 3)
+2025-06-12 15:48:05,255 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:13:03,353 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 16:13:03,829 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/559232570: HTTP 403
+2025-06-12 16:13:10,907 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 16:13:12,127 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/559232570: HTTP 403
+2025-06-12 16:13:19,752 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 16:13:20,335 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/559232570: HTTP 403
+2025-06-12 16:13:20,340 - agents.researcher - WARNING - Low content yield, attempting alternative search strategy
+2025-06-12 16:13:23,671 - agents.researcher - WARNING - Initial research found only 1 sources, need at least 2. Attempting enhanced search.
+2025-06-12 16:13:26,710 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868/answers/updated: HTTP 403
+2025-06-12 16:13:26,885 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 16:13:33,799 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 16:13:35,307 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868/answers/updated: HTTP 403
+2025-06-12 16:13:45,840 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/634448868/answers/updated: HTTP 403
+2025-06-12 16:13:45,863 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 16:14:10,529 - tools.scraper_tools - WARNING - Failed to scrape https://qikan.cqvip.com/Qikan/Article/Detail?id=7113520032: HTTP 412
+2025-06-12 16:14:11,503 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/612534231: HTTP 403
+2025-06-12 16:14:11,560 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 16:14:11,562 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/562226867: HTTP 403
+2025-06-12 16:14:11,663 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/600804021: HTTP 403
+2025-06-12 16:14:11,787 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:11,991 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/687075177: HTTP 403
+2025-06-12 16:14:12,127 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/558525517: HTTP 403
+2025-06-12 16:14:12,170 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:12,477 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:12,569 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:12,759 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 1): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:13,556 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 16:14:14,866 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:15,179 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:15,323 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:15,359 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:15,819 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 2): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:18,940 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:18,962 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:19,060 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:19,333 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/558525517: HTTP 403
+2025-06-12 16:14:19,378 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:19,502 - tools.scraper_tools - ERROR - Error scraping https://www.chinaxiv.org/user/view.htm?uuid=6e87b803-760d-43fb-9377-63d14296135b&filetype=pdf (attempt 3): 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+2025-06-12 16:14:19,977 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/687075177: HTTP 403
+2025-06-12 16:14:21,455 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/612534231: HTTP 403
+2025-06-12 16:14:22,266 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/600804021: HTTP 403
+2025-06-12 16:14:22,917 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/562226867: HTTP 403
+2025-06-12 16:14:23,079 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 16:14:23,513 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 16:14:29,332 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/687075177: HTTP 403
+2025-06-12 16:14:29,334 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:30,783 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.zhihu.com/question/558525517: HTTP 403
+2025-06-12 16:14:30,972 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/612534231: HTTP 403
+2025-06-12 16:14:30,972 - tools.scraper_tools - WARNING - Low overall success rate. Consider using alternative content sources.
+2025-06-12 16:14:30,973 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:32,785 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/600804021: HTTP 403
+2025-06-12 16:14:32,788 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/562226867: HTTP 403
+2025-06-12 16:14:32,790 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:34,773 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:36,696 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/562389931: HTTP 403
+2025-06-12 16:14:36,718 - tools.scraper_tools - WARNING - Anti-crawler detected for https://zhuanlan.zhihu.com/p/573627573: HTTP 403
+2025-06-12 16:14:36,719 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:39,322 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:41,278 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:43,020 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:44,677 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:46,556 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:48,276 - tools.scraper_tools - WARNING - Server error for https://www.51cto.com/aigc/5434.html: HTTP 567
+2025-06-12 16:14:48,342 - tools.scraper_tools - WARNING - Failed to scrape https://lib.cqvip.com/Qikan/Article/Detail?id=7111468865: HTTP 412
+2025-06-12 16:14:49,005 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:49,006 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:52,540 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:54,509 - tools.scraper_tools - WARNING - Server error for https://www.51cto.com/aigc/5434.html: HTTP 567
+2025-06-12 16:14:54,532 - tools.scraper_tools - WARNING - Server error for https://www.51cto.com/aigc/5434.html: HTTP 567
+2025-06-12 16:14:54,684 - tools.scraper_tools - ERROR - Error scraping https://www.ebiotrade.com/newsf/2025-6/20250612053951342.htm (attempt 1): 'utf-8' codec can't decode byte 0xb0 in position 148: invalid start byte
+2025-06-12 16:14:55,379 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:57,031 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:14:58,757 - tools.scraper_tools - WARNING - Server error for https://www.51cto.com/aigc/5434.html: HTTP 567
+2025-06-12 16:14:58,758 - tools.scraper_tools - WARNING - Server error for https://www.51cto.com/aigc/5434.html: HTTP 567
+2025-06-12 16:14:58,759 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:15:00,693 - tools.scraper_tools - ERROR - Error scraping https://www.ebiotrade.com/newsf/2025-6/20250612053951342.htm (attempt 2): 'utf-8' codec can't decode byte 0xb0 in position 148: invalid start byte
+2025-06-12 16:15:00,972 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:15:02,873 - tools.scraper_tools - WARNING - Server error for https://www.51cto.com/aigc/5434.html: HTTP 567
+2025-06-12 16:15:02,874 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:15:04,916 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:15:04,916 - agents.researcher - WARNING - Only found 0 sources for topic '扩散模型在文本生成与风格转换中的探索', need at least 2. Attempting enhanced search (retry 1/3)
+2025-06-12 16:15:06,533 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:15:08,344 - tools.scraper_tools - ERROR - Error scraping https://www.ebiotrade.com/newsf/2025-6/20250612053951342.htm (attempt 3): 'utf-8' codec can't decode byte 0xb0 in position 148: invalid start byte
+2025-06-12 16:15:08,344 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:15:10,757 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:15:10,757 - agents.researcher - WARNING - Only found 0 sources for topic '扩散模型的基本原理与生成机制', need at least 2. Attempting enhanced search (retry 1/3)
+2025-06-12 16:15:13,431 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:15:13,431 - agents.researcher - WARNING - Only found 0 sources for topic '扩散模型的局限性与未来发展方向', need at least 2. Attempting enhanced search (retry 1/3)
+2025-06-12 16:15:16,274 - tools.scraper_tools - WARNING - Failed to scrape https://chandlerye.github.io/2023/08/31/paper_医学影像中的扩散模型+综合综述/: HTTP 404
+2025-06-12 16:15:16,464 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.researchgate.net/search/publications: HTTP 403
+2025-06-12 16:15:16,465 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:15:16,465 - agents.researcher - WARNING - Only found 0 sources for topic '扩散模型在多模态任务中的潜力与实例', need at least 2. Attempting enhanced search (retry 1/3)
+2025-06-12 16:15:18,370 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.researchgate.net/: HTTP 403
+2025-06-12 16:15:24,311 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 1): 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 16:15:26,969 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.researchgate.net/search/publications: HTTP 403
+2025-06-12 16:15:27,489 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.researchgate.net/: HTTP 403
+2025-06-12 16:15:35,147 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.researchgate.net/search/publications: HTTP 403
+2025-06-12 16:15:35,648 - tools.scraper_tools - WARNING - Anti-crawler detected for https://www.researchgate.net/: HTTP 403
+2025-06-12 16:15:41,732 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 2): 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 16:15:57,018 - tools.scraper_tools - ERROR - Error scraping https://www.cttacn.org.cn/cn/article/pdf/preview/10.15953/j.ctta.2024.316.pdf (attempt 3): 'utf-8' codec can't decode byte 0xf6 in position 10: invalid start byte
+2025-06-12 16:15:57,022 - tools.scraper_tools - WARNING - No relevant content extracted. Consider adjusting quality thresholds or search terms.
+2025-06-12 16:15:57,022 - agents.researcher - WARNING - Only found 0 sources for topic '扩散模型在图像生成任务中的应用', need at least 2. Attempting enhanced search (retry 1/3)
+2025-06-12 16:35:58,336 - tools.scraper_tools - ERROR - Error scraping https://www.katech.re.kr/download/aa2b8e53-95d5-4adc-9b30-19b20e194701 (attempt 1): Cannot connect to host www.katech.re.kr:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-06-12 16:36:00,060 - tools.scraper_tools - ERROR - Error scraping https://gomdeang2.com/entry/2025년-테슬라-자율주행-기술-현황-FSD-비전AI-도조칩 (attempt 1): Cannot connect to host gomdeang2.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:04,223 - tools.scraper_tools - ERROR - Error scraping https://gomdeang2.com/entry/2025년-테슬라-자율주행-기술-현황-FSD-비전AI-도조칩 (attempt 2): Cannot connect to host gomdeang2.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:04,442 - tools.scraper_tools - ERROR - Error scraping https://www.katech.re.kr/download/aa2b8e53-95d5-4adc-9b30-19b20e194701 (attempt 2): Cannot connect to host www.katech.re.kr:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-06-12 16:36:08,123 - tools.scraper_tools - ERROR - Error scraping https://gomdeang2.com/entry/2025년-테슬라-자율주행-기술-현황-FSD-비전AI-도조칩 (attempt 3): Cannot connect to host gomdeang2.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:10,091 - tools.scraper_tools - ERROR - Error scraping https://www.katech.re.kr/download/aa2b8e53-95d5-4adc-9b30-19b20e194701 (attempt 3): Cannot connect to host www.katech.re.kr:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-06-12 16:36:12,929 - tools.scraper_tools - WARNING - Anti-crawler detected for https://theauto.tistory.com/entry/BYD-Blade-각형셀과-테슬라-4680-원통형-셀의-설계-및-성능-비교-분석: HTTP 403
+2025-06-12 16:36:13,159 - tools.scraper_tools - ERROR - Error scraping https://spacetravler.com/entry/테슬라-vs-현대-자율주행-비교-분석 (attempt 1): Cannot connect to host spacetravler.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:13,201 - tools.scraper_tools - ERROR - Error scraping https://vacuum21.com/entry/전기차-자율주행-기능-비교 (attempt 1): Cannot connect to host vacuum21.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:14,229 - tools.scraper_tools - ERROR - Error scraping https://vacuum21.com/entry/전기차-자율주행-기능-비교 (attempt 2): Cannot connect to host vacuum21.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:17,413 - tools.scraper_tools - ERROR - Error scraping https://spacetravler.com/entry/테슬라-vs-현대-자율주행-비교-분석 (attempt 2): Cannot connect to host spacetravler.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:17,414 - tools.scraper_tools - ERROR - Error scraping https://vacuum21.com/entry/전기차-자율주행-기능-비교 (attempt 3): Cannot connect to host vacuum21.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:19,513 - tools.scraper_tools - ERROR - Error scraping https://spacetravler.com/entry/테슬라-vs-현대-자율주행-비교-분석 (attempt 3): Cannot connect to host spacetravler.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:25,610 - tools.scraper_tools - WARNING - Anti-crawler detected for https://theauto.tistory.com/entry/BYD-Blade-각형셀과-테슬라-4680-원통형-셀의-설계-및-성능-비교-분석: HTTP 403
+2025-06-12 16:36:28,073 - tools.scraper_tools - WARNING - Timeout scraping https://www.tesla.com/ko_kr/supercharger (attempt 1)
+2025-06-12 16:36:38,578 - tools.scraper_tools - WARNING - Anti-crawler detected for https://theauto.tistory.com/entry/BYD-Blade-각형셀과-테슬라-4680-원통형-셀의-설계-및-성능-비교-분석: HTTP 403
+2025-06-12 16:36:45,117 - tools.scraper_tools - WARNING - Timeout scraping https://www.tesla.com/ko_kr/impact (attempt 1)
+2025-06-12 16:36:52,335 - tools.scraper_tools - ERROR - Error scraping https://runjimmy.com/entry/테슬라-vs-BYD-배터리-성능-기술-안정성-차이 (attempt 1): Cannot connect to host runjimmy.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:54,179 - tools.scraper_tools - ERROR - Error scraping https://runjimmy.com/entry/테슬라-vs-BYD-배터리-성능-기술-안정성-차이 (attempt 2): Cannot connect to host runjimmy.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:36:57,164 - tools.scraper_tools - ERROR - Error scraping https://runjimmy.com/entry/테슬라-vs-BYD-배터리-성능-기술-안정성-차이 (attempt 3): Cannot connect to host runjimmy.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:37:02,004 - tools.scraper_tools - WARNING - Timeout scraping https://www.tesla.com/ko_kr/supercharger (attempt 2)
+2025-06-12 16:37:17,004 - tools.scraper_tools - WARNING - Timeout scraping https://www.tesla.com/ko_kr/impact (attempt 2)
+2025-06-12 16:37:35,005 - tools.scraper_tools - WARNING - Timeout scraping https://www.tesla.com/ko_kr/supercharger (attempt 3)
+2025-06-12 16:37:45,286 - tools.scraper_tools - ERROR - Error scraping https://www.keei.re.kr/pdfOpen?bid=0014&list_no=123083&seq=1 (attempt 1): 'utf-8' codec can't decode byte 0xaa in position 10: invalid start byte
+2025-06-12 16:37:48,651 - tools.scraper_tools - ERROR - Error scraping https://www.keei.re.kr/pdfOpen?bid=0014&list_no=123083&seq=1 (attempt 2): 'utf-8' codec can't decode byte 0xaa in position 10: invalid start byte
+2025-06-12 16:37:50,006 - tools.scraper_tools - WARNING - Timeout scraping https://www.tesla.com/ko_kr/impact (attempt 3)
+2025-06-12 16:37:53,374 - tools.scraper_tools - ERROR - Error scraping https://www.keei.re.kr/pdfOpen?bid=0014&list_no=123083&seq=1 (attempt 3): 'utf-8' codec can't decode byte 0xaa in position 10: invalid start byte
+2025-06-12 16:38:03,763 - tools.scraper_tools - ERROR - Error scraping https://money8614.com/entry/전기차-충전-인프라-현황-및-전망 (attempt 1): Cannot connect to host money8614.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:38:04,993 - tools.scraper_tools - ERROR - Error scraping https://main-issue.com/entry/테슬라의-슈퍼차저-네트워크-2024년-확장-계획 (attempt 1): Cannot connect to host main-issue.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:38:05,480 - tools.scraper_tools - ERROR - Error scraping https://money8614.com/entry/전기차-충전-인프라-현황-및-전망 (attempt 2): Cannot connect to host money8614.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:38:06,663 - tools.scraper_tools - ERROR - Error scraping https://main-issue.com/entry/테슬라의-슈퍼차저-네트워크-2024년-확장-계획 (attempt 2): Cannot connect to host main-issue.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:38:07,870 - tools.scraper_tools - ERROR - Error scraping https://money8614.com/entry/전기차-충전-인프라-현황-및-전망 (attempt 3): Cannot connect to host money8614.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:38:09,542 - tools.scraper_tools - ERROR - Error scraping https://main-issue.com/entry/테슬라의-슈퍼차저-네트워크-2024년-확장-계획 (attempt 3): Cannot connect to host main-issue.com:443 ssl:default [nodename nor servname provided, or not known]
+2025-06-12 16:38:23,595 - localization.prompt_manager - WARNING - Prompt PromptType.RESEARCH_REVIEW not found for ko, using English fallback
+2025-06-12 16:38:26,969 - localization.prompt_manager - WARNING - Prompt PromptType.RESEARCH_REVIEW not found for ko, using English fallback
+2025-06-12 16:38:33,130 - localization.prompt_manager - WARNING - Prompt PromptType.RESEARCH_REVIEW not found for ko, using English fallback
+2025-06-12 16:38:38,621 - localization.prompt_manager - WARNING - Prompt PromptType.RESEARCH_REVIEW not found for ko, using English fallback
+2025-06-12 16:38:46,018 - localization.prompt_manager - WARNING - Prompt PromptType.RESEARCH_REVIEW not found for ko, using English fallback

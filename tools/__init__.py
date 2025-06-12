@@ -2,7 +2,7 @@
 from .search_tools import SearchTool, DuckDuckGoSearchTool, GoogleSearchTool
 from .scraper_tools import WebScraperTool, ContentExtractorTool
 from .llm_tools import LLMTool, OpenAITool, AnthropicTool
-from .document_tools import DocumentProcessorTool, PDFGeneratorTool, DocxGeneratorTool
+from .document_tools import DocumentProcessorTool, PDFGeneratorTool, DocxGeneratorTool, ContentDeduplicator
 
 # Optional imports that may fail due to dependencies
 try:
@@ -64,6 +64,7 @@ __all__ = [
     "DocumentProcessorTool",
     "PDFGeneratorTool",
     "DocxGeneratorTool",
+    "ContentDeduplicator",
     "create_chunking_strategy",
     "SemanticChunkingStrategy",
     "DocumentTypeChunkingStrategy",

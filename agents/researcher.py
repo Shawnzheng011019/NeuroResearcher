@@ -122,9 +122,23 @@ class ResearcherAgent:
                         logger.warning("Low content yield, attempting alternative search strategy")
                         await self._try_alternative_search(query, all_relevant_content)
 
-            # Check if we have any content
+            # Ensure minimum source requirement is met for initial research
+            min_sources_required = getattr(self.config, 'min_sources_per_topic', 2)
+            if len(all_relevant_content) < min_sources_required:
+                logger.warning(f"Initial research found only {len(all_relevant_content)} sources, need at least {min_sources_required}. Attempting enhanced search.")
+
+                # Get language code from state
+                language_code = state["task"].language if hasattr(state["task"], 'language') else "en"
+
+                # Try enhanced search for initial research
+                additional_sources = await self._enhanced_search_for_minimum_sources(
+                    query, all_relevant_content, min_sources_required
+                )
+                all_relevant_content.extend(additional_sources)
+
+            # Check if we have any content after all attempts
             if not all_relevant_content:
-                logger.warning("No research content found from any source")
+                logger.warning("No research content found from any source after all attempts")
                 state["errors"].append("No research content found")
                 return state
 
@@ -156,6 +170,8 @@ class ResearcherAgent:
             specific_queries = await self._generate_specific_queries(topic, state["task"].query, language_code)
 
             all_research_data = []
+            min_sources_required = getattr(self.config, 'min_sources_per_topic', 2)
+            max_retries = getattr(self.config, 'max_search_retries', 3)
 
             # Research each specific query using hybrid approach
             for query in specific_queries:
@@ -166,7 +182,7 @@ class ResearcherAgent:
                     try:
                         local_results = await self.rag_retriever.retrieve_relevant_documents(
                             query=query,
-                            top_k=3  # Limit for deep research
+                            top_k=5  # Increased for better coverage
                         )
                         query_results.extend(local_results)
                     except Exception as e:
@@ -175,26 +191,26 @@ class ResearcherAgent:
                 # 2. Web search with intelligent source selection
                 if self.config.retriever != "local":
                     search_results = await self.search_manager.search_with_diversification(
-                        query, max_per_domain=1  # More restrictive for deep research
+                        query, max_per_domain=2  # Increased for better coverage
                     )
 
                     if search_results:
                         # Select highest quality sources for deep research
                         top_results = sorted(search_results,
                                            key=lambda x: (x.get('domain_priority', 5), x.get('domain_reliability', 0.5)),
-                                           reverse=True)[:3]
+                                           reverse=True)[:5]  # Increased for better coverage
                         urls = [result["url"] for result in top_results]
 
                         scraped_data = await self.scraper.scrape_multiple(
-                            urls, max_concurrent=2, min_success_rate=0.5
+                            urls, max_concurrent=3, min_success_rate=0.3  # More lenient for better coverage
                         )
                         web_content = self.content_extractor.extract_relevant_content(
-                            scraped_data, query, min_quality_score=0.4  # Higher quality threshold for deep research
+                            scraped_data, query, min_quality_score=0.3  # Lower threshold for better coverage
                         )
                         query_results.extend(web_content)
 
                 all_research_data.extend(query_results)
-            
+
             # Remove duplicates based on URL
             seen_urls = set()
             unique_research_data = []
@@ -203,19 +219,37 @@ class ResearcherAgent:
                 if url not in seen_urls:
                     seen_urls.add(url)
                     unique_research_data.append(item)
-            
+
+            # Ensure minimum source requirement is met
+            retry_count = 0
+            while len(unique_research_data) < min_sources_required and retry_count < max_retries:
+                logger.warning(f"Only found {len(unique_research_data)} sources for topic '{topic}', need at least {min_sources_required}. Attempting enhanced search (retry {retry_count + 1}/{max_retries})")
+
+                additional_sources = await self._enhanced_search_for_minimum_sources(
+                    topic, unique_research_data, min_sources_required
+                )
+
+                # Add new sources
+                for source in additional_sources:
+                    url = source.get("url", "")
+                    if url not in seen_urls:
+                        seen_urls.add(url)
+                        unique_research_data.append(source)
+
+                retry_count += 1
+
             # Generate comprehensive research draft
             research_draft = await self._generate_research_draft(topic, unique_research_data, state["task"].query, language_code)
-            
+
             logger.info(f"Deep research completed for topic: {topic}. Found {len(unique_research_data)} unique sources")
-            
+
             return {
                 "topic": topic,
                 "content": research_draft,
                 "sources": unique_research_data,
                 "source_count": len(unique_research_data)
             }
-            
+
         except Exception as e:
             logger.error(f"Error in deep research for topic {topic}: {str(e)}")
             return {
@@ -274,9 +308,89 @@ class ResearcherAgent:
             logger.error(f"Failed to generate specific queries: {str(e)}")
             return [f"{topic} {main_query}"]  # Fallback query
     
+    async def _enhanced_search_for_minimum_sources(self, topic: str, existing_sources: List[Dict[str, Any]], min_required: int) -> List[Dict[str, Any]]:
+        """Enhanced search strategy to ensure minimum source requirements are met"""
+        additional_sources = []
+
+        # Strategy 1: Use alternative query formulations
+        alternative_queries = [
+            f"{topic} research",
+            f"{topic} study",
+            f"{topic} analysis",
+            f"{topic} review",
+            f"{topic} paper",
+            f"{topic} article"
+        ]
+
+        # Add English translations if original is Chinese
+        if any(ord(char) > 127 for char in topic):  # Contains non-ASCII characters
+            english_topic = self._translate_query_to_english(topic)
+            if english_topic:
+                alternative_queries.extend([
+                    f"{english_topic} research",
+                    f"{english_topic} study",
+                    f"{english_topic} analysis"
+                ])
+
+        # Strategy 2: Use broader search terms
+        broader_queries = [
+            self._broaden_search_terms(topic),
+            self._add_academic_terms(topic)
+        ]
+        alternative_queries.extend(broader_queries)
+
+        # Get existing URLs to avoid duplicates
+        existing_urls = {source.get("url", "") for source in existing_sources}
+
+        for query in alternative_queries:
+            if len(additional_sources) + len(existing_sources) >= min_required:
+                break
+
+            try:
+                # Use more aggressive search settings
+                search_results = await self.search_manager.search_all(query)
+
+                if search_results:
+                    # Lower quality thresholds for this enhanced search
+                    filtered_results = [r for r in search_results
+                                      if r.get("url", "") not in existing_urls][:5]
+
+                    if filtered_results:
+                        urls = [result["url"] for result in filtered_results]
+                        scraped_data = await self.scraper.scrape_multiple(
+                            urls, max_concurrent=3, min_success_rate=0.2  # Very lenient
+                        )
+
+                        # Use lower quality threshold
+                        web_content = self.content_extractor.extract_relevant_content(
+                            scraped_data, topic, min_quality_score=0.1
+                        )
+
+                        for content in web_content:
+                            if content.get("url", "") not in existing_urls:
+                                additional_sources.append(content)
+                                existing_urls.add(content.get("url", ""))
+
+                                if len(additional_sources) + len(existing_sources) >= min_required:
+                                    break
+
+            except Exception as e:
+                logger.warning(f"Enhanced search failed for query '{query}': {str(e)}")
+                continue
+
+        logger.info(f"Enhanced search found {len(additional_sources)} additional sources for topic '{topic}'")
+        return additional_sources
+
     async def _generate_research_draft(self, topic: str, research_data: List[Dict[str, Any]], main_query: str, language_code: Optional[str] = None) -> str:
+        min_sources_required = getattr(self.config, 'min_sources_per_topic', 2)
+
         if not research_data:
-            return f"No research data available for topic: {topic}"
+            # If no data at all, generate a basic research framework
+            logger.warning(f"No research data available for topic: {topic}. Generating basic framework.")
+            return await self._generate_basic_research_framework(topic, main_query, language_code)
+
+        if len(research_data) < min_sources_required:
+            logger.warning(f"Only {len(research_data)} sources found for topic '{topic}', below minimum of {min_sources_required}")
 
         # Prepare research content
         content_summary = self.content_extractor.summarize_content(research_data, max_summary_length=4000)
@@ -300,6 +414,42 @@ class ResearcherAgent:
         except Exception as e:
             logger.error(f"Failed to generate research draft for topic {topic}: {str(e)}")
             return f"Failed to generate research draft for topic: {topic}. Error: {str(e)}"
+
+    async def _generate_basic_research_framework(self, topic: str, main_query: str, language_code: Optional[str] = None) -> str:
+        """Generate a basic research framework when no sources are available"""
+
+        # Get localized prompts for basic framework generation
+        system_prompt, user_prompt = self.prompt_manager.format_prompt(
+            PromptType.RESEARCH_SUMMARY,  # Reuse existing prompt type
+            language_code=language_code,
+            query=main_query,
+            content_summary=f"Research topic: {topic}. No specific sources available, generate a comprehensive research framework based on general knowledge."
+        )
+
+        try:
+            framework = await self.llm_manager.generate_with_fallback(
+                prompt=user_prompt,
+                system_prompt=system_prompt,
+                tool_type="smart"
+            )
+
+            # Add disclaimer about limited sources
+            disclaimer = "\n\n**Note: This section is based on general knowledge due to limited available sources. Further research is recommended for comprehensive coverage.**"
+            return framework + disclaimer
+
+        except Exception as e:
+            logger.error(f"Failed to generate basic research framework for topic {topic}: {str(e)}")
+            # Return a minimal but structured response
+            return f"""## {topic}
+
+This research area requires further investigation. Key aspects to explore include:
+
+1. **Definition and Overview**: Understanding the fundamental concepts of {topic}
+2. **Current State**: Examining the current developments and applications
+3. **Challenges and Opportunities**: Identifying key challenges and potential opportunities
+4. **Future Directions**: Exploring potential future developments and research directions
+
+**Note: This framework is generated due to limited available sources. Comprehensive research with additional sources is recommended.**"""
 
     async def _try_alternative_search(self, original_query: str, existing_content: List[Dict[str, Any]]):
         """Try alternative search strategies when initial search yields poor results"""

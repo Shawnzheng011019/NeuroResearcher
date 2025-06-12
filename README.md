@@ -1,6 +1,15 @@
 # NeuralResearcher
 ![NeuralResearcher](assets/logo.png)
 
+**🌐 Language / 语言 / 言語 / 언어**
+- [English](README.md) (Current)
+- [简体中文](README_zh-CN.md)
+- [繁體中文](README_zh-TW.md)
+- [日本語](README_ja.md)
+- [한국어](README_ko.md)
+
+---
+
 An intelligent research assistant based on LangGraph that can automatically conduct in-depth research and generate high-quality research reports.
 
 ## Features
@@ -190,11 +199,6 @@ python rag_cli.py search --query "artificial intelligence" \
 python rag_cli.py stats
 ```
 
-#### Test RAG System
-```bash
-python test_rag_system.py
-```
-
 ### Programming Interface Usage
 
 #### Basic Research
@@ -330,19 +334,8 @@ The system automatically tracks API call costs:
 
 ## Testing and Validation
 
-### System Testing
-```bash
-# Run basic system tests
-python test_system.py
-
-# Run 8-agent pipeline tests
-python test_8agent_pipeline.py
-```
-
 ### Example Runs
 ```bash
-# Run interactive example
-python run_example.py
 
 # Quick test
 python -c "

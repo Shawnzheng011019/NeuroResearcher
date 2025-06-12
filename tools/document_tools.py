@@ -1,5 +1,6 @@
 import os
 import asyncio
+import re
 from typing import Dict, Any, Optional, List
 from pathlib import Path
 import markdown
@@ -19,18 +20,157 @@ from localization import LanguageManager, create_language_manager
 logger = logging.getLogger(__name__)
 
 
+class ContentDeduplicator:
+    """Tool for removing duplicate headings and content from markdown documents"""
+
+    def __init__(self):
+        self.heading_pattern = re.compile(r'^(#{1,6})\s+(.+)$', re.MULTILINE)
+
+    def remove_duplicate_headings(self, content: str) -> str:
+        """Remove duplicate consecutive headings in markdown content"""
+        if not content:
+            return content
+
+        lines = content.split('\n')
+        processed_lines = []
+        previous_headings = {}  # level -> text mapping
+
+        i = 0
+        while i < len(lines):
+            line = lines[i].strip()
+
+            # Check if current line is a heading
+            heading_match = self.heading_pattern.match(line)
+            if heading_match:
+                level = len(heading_match.group(1))  # Number of # symbols
+                text = heading_match.group(2).strip()
+
+                # Check if this is a duplicate of the previous heading at the same or higher level
+                should_skip = False
+
+                # Check for exact duplicate at same level
+                if level in previous_headings and previous_headings[level] == text:
+                    should_skip = True
+                    logger.info(f"Removing duplicate heading: {line}")
+
+                # Check for duplicate at different levels (e.g., ## Title followed by ### Title)
+                for prev_level, prev_text in previous_headings.items():
+                    if prev_text == text and abs(prev_level - level) == 1:
+                        # Keep the higher level heading (fewer #)
+                        if level > prev_level:
+                            should_skip = True
+                            logger.info(f"Removing lower-level duplicate heading: {line}")
+                        break
+
+                if not should_skip:
+                    processed_lines.append(lines[i])
+                    # Update previous headings, clearing lower levels
+                    previous_headings = {k: v for k, v in previous_headings.items() if k < level}
+                    previous_headings[level] = text
+                else:
+                    # Skip this line and any immediately following empty lines
+                    while i + 1 < len(lines) and not lines[i + 1].strip():
+                        i += 1
+            else:
+                processed_lines.append(lines[i])
+                # Reset heading tracking if we encounter non-heading content
+                if line:  # Only reset on non-empty lines
+                    previous_headings.clear()
+
+            i += 1
+
+        return '\n'.join(processed_lines)
+
+    def remove_redundant_sections(self, content: str) -> str:
+        """Remove redundant sections that appear multiple times"""
+        if not content:
+            return content
+
+        # Split content into sections based on headings
+        sections = re.split(r'\n(?=#{1,6}\s)', content)
+        unique_sections = []
+        seen_section_titles = set()
+
+        for section in sections:
+            if not section.strip():
+                continue
+
+            # Extract section title
+            lines = section.split('\n')
+            first_line = lines[0].strip()
+            heading_match = self.heading_pattern.match(first_line)
+
+            if heading_match:
+                title = heading_match.group(2).strip().lower()
+
+                # Check for similar titles (fuzzy matching)
+                is_duplicate = False
+                for seen_title in seen_section_titles:
+                    if self._are_titles_similar(title, seen_title):
+                        is_duplicate = True
+                        logger.info(f"Removing duplicate section: {first_line}")
+                        break
+
+                if not is_duplicate:
+                    unique_sections.append(section)
+                    seen_section_titles.add(title)
+            else:
+                # Non-heading section, keep it
+                unique_sections.append(section)
+
+        return '\n'.join(unique_sections)
+
+    def _are_titles_similar(self, title1: str, title2: str, threshold: float = 0.8) -> bool:
+        """Check if two titles are similar using simple string similarity"""
+        if title1 == title2:
+            return True
+
+        # Simple similarity check based on common words
+        words1 = set(title1.split())
+        words2 = set(title2.split())
+
+        if not words1 or not words2:
+            return False
+
+        intersection = words1.intersection(words2)
+        union = words1.union(words2)
+
+        similarity = len(intersection) / len(union)
+        return similarity >= threshold
+
+    def clean_content(self, content: str) -> str:
+        """Main method to clean content by removing duplicates"""
+        if not content:
+            return content
+
+        # First remove duplicate headings
+        content = self.remove_duplicate_headings(content)
+
+        # Then remove redundant sections
+        content = self.remove_redundant_sections(content)
+
+        # Clean up extra whitespace
+        content = re.sub(r'\n{3,}', '\n\n', content)
+
+        return content.strip()
+
+
 class DocumentProcessorTool:
     def __init__(self, output_dir: str = "./outputs"):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
-    
+        self.deduplicator = ContentDeduplicator()
+
     def process_markdown(self, content: str) -> str:
         # Convert markdown to HTML for better processing
         html_content = markdown.markdown(content, extensions=['tables', 'toc', 'codehilite'])
         return html_content
-    
+
     def clean_content_for_export(self, content: str) -> str:
-        # Remove or replace problematic characters for document export
+        # First remove duplicate headings and sections
+        content = self.deduplicator.clean_content(content)
+
+        # Then remove or replace problematic characters for document export
         content = content.replace('\u2019', "'")  # Replace smart quotes
         content = content.replace('\u201c', '"')
         content = content.replace('\u201d', '"')
