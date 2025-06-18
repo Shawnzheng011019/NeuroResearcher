@@ -294,9 +294,9 @@ def create_search_manager(config) -> SearchManager:
     tools.append(DuckDuckGoSearchTool(max_results=config.max_search_results_per_query))
 
     # Add Google if API keys are available
-    if config.google_api_key_search and config.google_cx_id:
+    if config.google_api_key and config.google_cx_id:
         tools.append(GoogleSearchTool(
-            api_key=config.google_api_key_search,
+            api_key=config.google_api_key,
             cx_id=config.google_cx_id,
             max_results=config.max_search_results_per_query
         ))

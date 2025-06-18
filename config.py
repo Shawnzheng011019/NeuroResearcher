@@ -53,12 +53,17 @@ class Config(BaseSettings):
 
     # API Keys
     openai_api_key: Optional[str] = Field(default=None, alias="OPENAI_API_KEY")
+    openai_base_url: str = Field(default="https://api.openai.com/v1", alias="OPENAI_BASE_URL")
+    openai_secret_key: Optional[str] = Field(default=None, alias="OPENAI_SECRET_KEY")
     anthropic_api_key: Optional[str] = Field(default=None, alias="ANTHROPIC_API_KEY")
     google_api_key: Optional[str] = Field(default=None, alias="GOOGLE_API_KEY")
 
+    # Model Configuration
+    openai_model_name: str = Field(default="gpt-4o", alias="OPENAI_MODEL_NAME")
+    anthropic_model_name: str = Field(default="claude-3-sonnet-20240229", alias="ANTHROPIC_MODEL_NAME")
+
     # Search Configuration
     search_api: str = Field(default="duckduckgo", alias="SEARCH_API")
-    google_api_key_search: Optional[str] = Field(default=None, alias="GOOGLE_API_KEY")
     google_cx_id: Optional[str] = Field(default=None, alias="GOOGLE_CX_ID")
     bing_api_key: Optional[str] = Field(default=None, alias="BING_API_KEY")
     serpapi_api_key: Optional[str] = Field(default=None, alias="SERPAPI_API_KEY")
@@ -134,6 +139,11 @@ class Config(BaseSettings):
     # Logging
     verbose: bool = Field(default=True, alias="VERBOSE")
     
+    # LangSmith Configuration (Optional - for debugging and monitoring)
+    langchain_api_key: Optional[str] = Field(default=None, alias="LANGCHAIN_API_KEY")
+    langchain_tracing_v2: bool = Field(default=False, alias="LANGCHAIN_TRACING_V2")
+    langchain_project: str = Field(default="gpt-researcher-langgraph", alias="LANGCHAIN_PROJECT")
+    
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
@@ -152,7 +162,7 @@ class TaskConfig(BaseModel):
     })
     include_human_feedback: bool = False
     follow_guidelines: bool = False
-    model: str = "gpt-4o"
+    model: str = ""  # Will be set from config if empty
     guidelines: List[str] = Field(default_factory=list)
     verbose: bool = True
     source_urls: Optional[List[str]] = None
@@ -171,4 +181,11 @@ def get_config() -> Config:
 
 
 def get_task_config(query: str, **kwargs) -> TaskConfig:
-    return TaskConfig(query=query, **kwargs)
+    config = get_config()
+    task_config = TaskConfig(query=query, **kwargs)
+    
+    # Set default model from config if not provided
+    if not task_config.model:
+        task_config.model = config.smart_llm_model
+    
+    return task_config

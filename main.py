@@ -158,6 +158,9 @@ class ResearchRunner:
 
 
 async def main():
+    # Load config first to get default model
+    config = get_config()
+    
     parser = argparse.ArgumentParser(description="GPT Researcher - LangGraph Implementation")
     parser.add_argument("query", nargs="?", help="Research query")
     parser.add_argument("--config", "-c", help="Configuration file path")
@@ -166,7 +169,7 @@ async def main():
                        default=["markdown"], help="Output formats")
     parser.add_argument("--max-sections", "-s", type=int, default=5, help="Maximum number of sections")
     parser.add_argument("--verbose", "-v", action="store_true", help="Verbose logging")
-    parser.add_argument("--model", "-m", default="gpt-4o", help="LLM model to use")
+    parser.add_argument("--model", "-m", default=config.smart_llm_model, help="LLM model to use")
     parser.add_argument("--tone", "-t", default="objective", help="Writing tone")
     parser.add_argument("--template", default="none",
                        help="Template name to use (use 'none' for free LLM generation)")
@@ -246,6 +249,8 @@ async def example_basic_research():
 
 async def example_advanced_research():
     """Example of advanced research with custom configuration"""
+    config = get_config()
+    
     task_config = TaskConfig(
         query="How is climate change affecting global food security?",
         max_sections=5,
@@ -256,7 +261,7 @@ async def example_advanced_research():
             "Include statistical data where available",
             "Cite all sources properly"
         ],
-        model="gpt-4o",
+        model=config.smart_llm_model,
         tone=Tone.ANALYTICAL,
         verbose=True
     )

@@ -24,3 +24,6 @@ __pycache__/
 
 # Output directories
 outputs/
+
+# Log files and directories
+logs/

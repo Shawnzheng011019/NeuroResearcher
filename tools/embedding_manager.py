@@ -42,11 +42,11 @@ class BaseEmbeddingProvider(ABC):
 
 
 class OpenAIEmbeddingProvider(BaseEmbeddingProvider):
-    def __init__(self, api_key: str, model: str = "text-embedding-3-small"):
+    def __init__(self, api_key: str, model: str = "text-embedding-3-small", base_url: str = "https://api.openai.com/v1"):
         if not OPENAI_AVAILABLE:
             raise ImportError("OpenAI package is required. Install with: pip install openai")
         
-        self.client = openai.AsyncOpenAI(api_key=api_key)
+        self.client = openai.AsyncOpenAI(api_key=api_key, base_url=base_url)
         self.model = model
         self.dimension = self._get_model_dimension(model)
     
@@ -199,11 +199,13 @@ class EmbeddingManager:
         provider_name = self.config.embedding_provider.lower()
         
         if provider_name == "openai":
-            if not self.config.openai_api_key:
+            api_key = self.config.openai_api_key or self.config.openai_secret_key
+            if not api_key:
                 raise ValueError("OpenAI API key is required for OpenAI embedding provider")
             return OpenAIEmbeddingProvider(
-                api_key=self.config.openai_api_key,
-                model=self.config.embedding_model
+                api_key=api_key,
+                model=self.config.embedding_model,
+                base_url=self.config.openai_base_url
             )
         
         elif provider_name == "sentence_transformers":

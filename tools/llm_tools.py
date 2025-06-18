@@ -29,9 +29,9 @@ class LLMTool(ABC):
 
 
 class OpenAITool(LLMTool):
-    def __init__(self, api_key: str, model: str = "gpt-4o", max_tokens: int = 4000, temperature: float = 0.7):
+    def __init__(self, api_key: str, model: str = "gpt-4o", max_tokens: int = 4000, temperature: float = 0.7, base_url: str = "https://api.openai.com/v1"):
         super().__init__(model, max_tokens, temperature)
-        self.client = openai.AsyncOpenAI(api_key=api_key)
+        self.client = openai.AsyncOpenAI(api_key=api_key, base_url=base_url)
         
         # Pricing per 1K tokens (as of 2024)
         self.pricing = {
@@ -127,34 +127,49 @@ class LLMManager:
     
     def _initialize_tools(self):
         # Initialize OpenAI tools
-        if self.config.openai_api_key:
+        api_key = self.config.openai_api_key or self.config.openai_secret_key
+        if api_key:
             self.tools["openai_fast"] = OpenAITool(
-                api_key=self.config.openai_api_key,
+                api_key=api_key,
                 model=self.config.fast_llm_model,
-                temperature=0.7
+                temperature=0.7,
+                base_url=self.config.openai_base_url
             )
             self.tools["openai_smart"] = OpenAITool(
-                api_key=self.config.openai_api_key,
+                api_key=api_key,
                 model=self.config.smart_llm_model,
-                temperature=0.7
+                temperature=0.7,
+                base_url=self.config.openai_base_url
             )
             self.tools["openai_strategic"] = OpenAITool(
-                api_key=self.config.openai_api_key,
+                api_key=api_key,
                 model=self.config.strategic_llm_model,
-                temperature=0.3
+                temperature=0.3,
+                base_url=self.config.openai_base_url
+            )
+            # Add a tool using the configured model name
+            self.tools["openai_configured"] = OpenAITool(
+                api_key=api_key,
+                model=self.config.openai_model_name,
+                temperature=0.7,
+                base_url=self.config.openai_base_url
             )
         
         # Initialize Anthropic tools
         if self.config.anthropic_api_key:
             self.tools["anthropic"] = AnthropicTool(
                 api_key=self.config.anthropic_api_key,
-                model="claude-3-sonnet-20240229",
+                model=self.config.anthropic_model_name,
                 temperature=0.7
             )
     
     def get_tool(self, tool_type: str = "smart") -> LLMTool:
         if self.config.llm_provider.value == "openai":
-            tool_key = f"openai_{tool_type}"
+            # Support for configured model
+            if tool_type == "configured":
+                tool_key = "openai_configured"
+            else:
+                tool_key = f"openai_{tool_type}"
         elif self.config.llm_provider.value == "anthropic":
             tool_key = "anthropic"
         else:
